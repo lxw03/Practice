@@ -54,7 +54,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        android:backgroundTint="@color/main_color"
+        app:backgroundTint="@color/main_color"
         android:src="@mipmap/ic_arrow_upward"
         android:layout_marginBottom="60dp"
         android:layout_marginRight="16dp"
