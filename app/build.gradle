@@ -47,4 +47,7 @@ dependencies {
 
     //iRecyclerView
 //    compile 'com.github.Aspsine:IRecyclerView:0.0.5'
+
+    //动画库
+    compile 'com.airbnb.android:lottie:1.0.1'
 }
