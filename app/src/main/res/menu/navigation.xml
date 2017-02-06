@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item
-        android:id="@+id/home"
-        android:icon="@mipmap/home"
-        android:title="home"/>
-    <item
-        android:id="@+id/nuggets"
-        android:icon="@mipmap/nuggets"
-        android:title="nuggets"/>
-    <item
-        android:id="@+id/me"
-        android:icon="@mipmap/me"
-        android:title="me"/>
+    <!--<item-->
+        <!--android:id="@+id/home"-->
+        <!--android:icon="@mipmap/home"-->
+        <!--android:title="home"/>-->
+    <!--<item-->
+        <!--android:id="@+id/nuggets"-->
+        <!--android:icon="@mipmap/nuggets"-->
+        <!--android:title="nuggets"/>-->
+    <!--<item-->
+        <!--android:id="@+id/me"-->
+        <!--android:icon="@mipmap/me"-->
+        <!--android:title="me"/>-->
 </menu>
