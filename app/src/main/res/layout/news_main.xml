@@ -1,10 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <TextView
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/main_color"
+        >
+        <android.support.v7.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/main_color"
+            app:title="@string/app_name"
+            app:layout_scrollFlags="scroll|enterAlways"
+            >
+        </android.support.v7.widget.Toolbar>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/main_color"
+            android:orientation="horizontal"
+            >
+            <android.support.design.widget.TabLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:tabBackground="@color/main_color"
+                app:tabIndicatorColor="@color/white"
+                >
+            </android.support.design.widget.TabLayout>
+            <ImageView
+                android:id="@+id/iv_add_tabs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_add"
+                android:layout_gravity="center"
+                />
+        </LinearLayout>
+    </android.support.design.widget.AppBarLayout>
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_news"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="News"/>
-</LinearLayout>
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        >
+    </android.support.v4.view.ViewPager>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_news"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:backgroundTint="@color/main_color"
+        android:src="@mipmap/ic_arrow_upward"
+        android:layout_marginBottom="60dp"
+        android:layout_marginRight="16dp"
+        />
+</android.support.design.widget.CoordinatorLayout>
