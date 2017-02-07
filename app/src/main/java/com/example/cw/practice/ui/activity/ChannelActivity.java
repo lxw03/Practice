@@ -1,5 +1,7 @@
 package com.example.cw.practice.ui.activity;
 
+import android.animation.ValueAnimator;
+import android.graphics.Path;
 import android.graphics.PathMeasure;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,6 +12,8 @@ import android.support.v7.widget.Toolbar;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.LinearInterpolator;
+import android.widget.LinearLayout;
 
 import com.example.cw.practice.R;
 import com.example.cw.practice.common.channel.AllTabsAdapter;
@@ -37,6 +41,7 @@ public class ChannelActivity extends AppCompatActivity implements AllTabsAdapter
     private ItemTouchHelper itemTouchHelper;
 
     private Toolbar mToolbar;
+    private LinearLayout mLinearLayout;
 
     private void initData() {
 
@@ -112,18 +117,21 @@ public class ChannelActivity extends AppCompatActivity implements AllTabsAdapter
 
         allTabsAdapter.setListener(this);
         choseTabsAdapter.setListener(this);
+
+        mLinearLayout = (LinearLayout) findViewById(R.id.channel_linearLayout);
     }
 
     //点击view拿到当前view的坐标
 
     @Override
     public void allTabsItemClick(View view, int position) {
-        allTabs_recyclerView.removeView(view);
-        String item = allTabs.get(position);
-        allTabs.remove(item);
-        choseTabs.add(item);
-        choseTabsAdapter.notifyDataSetChanged();
-        emit();
+//        allTabs_recyclerView.removeView(view);
+//        String item = allTabs.get(position);
+//        allTabs.remove(item);
+//        choseTabs.add(item);
+//        choseTabsAdapter.notifyDataSetChanged();
+//        emit();
+        tabsItemClickAnimation(view, position);
     }
 
     @Override
@@ -135,10 +143,64 @@ public class ChannelActivity extends AppCompatActivity implements AllTabsAdapter
         allTabsAdapter.notifyDataSetChanged();
     }
 
+
     private void tabsItemClickAnimation(View view, int position){
-        final PathMeasure pathMeasure;
+        final PathMeasure mPathMeasure;
         final float[] mCurrentPosition = new float[2];
         int parentLoc[] = new int[2];
+        mLinearLayout.getLocationInWindow(parentLoc);
+        int startLoc[] = new int[2];
+        view.getLocationInWindow(startLoc);
+
+        final View startView = view;
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(view.getWidth(), view.getHeight());
+        allTabs_recyclerView.removeView(view);
+        mLinearLayout.addView(startView, params);
+        Log.e("tag", startView.getWidth() + "#" + startView.getHeight());
+
+        final View endView;
+        float toX, toY;
+        int endLoc[] = new int[2];
+        int i = choseTabs.size();
+
+        if (i == 0) {
+            toX = view.getWidth();
+            toY = view.getHeight();
+        } else if (i % 4 == 0) {
+            endView = choseTabs_recyclerView.getChildAt(i - 4);
+            endView.getLocationInWindow(endLoc);
+            toX = endLoc[0] - parentLoc[0];
+            toY = endLoc[1] + view.getHeight() - parentLoc[1];
+        } else {
+            endView = choseTabs_recyclerView.getChildAt(i - 1);
+            endView.getLocationInWindow(endLoc);
+            toX = endLoc[0] + view.getWidth() - parentLoc[0];
+            toY = endLoc[1] - parentLoc[1];
+        }
+
+
+        float startX = startLoc[0] - parentLoc[0];
+        float startY = startLoc[1] - parentLoc[1];
+
+        Path mPath = new Path();
+        mPath.moveTo(startX, startY);
+        mPath.lineTo(toX, toY);
+        mPathMeasure = new PathMeasure(mPath, false);
+
+        ValueAnimator animator = ValueAnimator.ofFloat(0, mPathMeasure.getLength());
+        animator.setDuration(3000);
+        animator.setInterpolator(new LinearInterpolator());
+        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator valueAnimator) {
+                float value = (Float) valueAnimator.getAnimatedValue();
+                mPathMeasure.getPosTan(value, mCurrentPosition, null);
+                startView.setX(mCurrentPosition[0]);
+                startView.setY(mCurrentPosition[1]);
+                Log.e("tag", mCurrentPosition[0] + "@" + mCurrentPosition[1]);
+            }
+        });
+        animator.start();
     }
 
     private void emit(){
