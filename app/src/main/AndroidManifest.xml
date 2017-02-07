@@ -16,6 +16,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.activity.SplashActivity"/>
+        <activity android:name=".ui.activity.ChannelActivity"/>
     </application>
 
 </manifest>

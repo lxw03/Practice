@@ -1,5 +1,6 @@
 package com.example.cw.practice.ui.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
@@ -9,8 +10,11 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
+import com.example.cw.practice.MainActivity;
 import com.example.cw.practice.R;
+import com.example.cw.practice.ui.activity.ChannelActivity;
 
 /**
  * Created by chenwei on 17/2/6.
@@ -23,6 +27,7 @@ public class MainNews extends Fragment {
 
     private ViewPager mViewPager;
     private TabLayout mTabLayout;
+    private ImageView iv_add_tabs;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -52,6 +57,15 @@ public class MainNews extends Fragment {
             @Override
             public CharSequence getPageTitle(int position) {
                 return mTabs[position];
+            }
+        });
+
+        iv_add_tabs = (ImageView) view.findViewById(R.id.iv_add_tabs);
+        iv_add_tabs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity().getApplicationContext(), ChannelActivity.class);
+                startActivity(intent);
             }
         });
     }
