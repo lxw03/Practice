@@ -51,4 +51,7 @@ dependencies {
 
     //动画库
     compile 'com.airbnb.android:lottie:1.0.1'
+
+    //事件总线
+    compile 'org.greenrobot:eventbus:3.0.0'
 }
