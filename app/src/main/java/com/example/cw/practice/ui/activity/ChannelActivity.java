@@ -5,8 +5,8 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.support.v7.widget.helper.ItemTouchHelper;
-import android.util.Log;
 import android.view.View;
 
 import com.example.cw.practice.R;
@@ -30,6 +30,8 @@ public class ChannelActivity extends AppCompatActivity implements AllTabsAdapter
     private AllTabsAdapter allTabsAdapter;
     private ChoseTabsAdapter choseTabsAdapter;
     private ItemTouchHelper itemTouchHelper;
+
+    private Toolbar mToolbar;
 
     private void initData() {
 
@@ -82,7 +84,18 @@ public class ChannelActivity extends AppCompatActivity implements AllTabsAdapter
         super.onCreate(savedInstanceState);
         initData();
         setContentView(R.layout.activity_channel);
+        initToolbar();
         initViews();
+    }
+
+    private void initToolbar() {
+        mToolbar = (Toolbar) findViewById(R.id.channel_toolbar);
+        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
 
     private void initViews() {
