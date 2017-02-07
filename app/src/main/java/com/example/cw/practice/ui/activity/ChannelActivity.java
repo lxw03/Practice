@@ -1,5 +1,6 @@
 package com.example.cw.practice.ui.activity;
 
+import android.graphics.PathMeasure;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -7,12 +8,16 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.support.v7.widget.helper.ItemTouchHelper;
+import android.util.Log;
 import android.view.View;
 
 import com.example.cw.practice.R;
 import com.example.cw.practice.common.channel.AllTabsAdapter;
 import com.example.cw.practice.common.channel.ChoseTabsAdapter;
 import com.example.cw.practice.common.channel.SpaceItemDecoration;
+import com.example.cw.practice.common.eventBus.MessageEvent;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
 
@@ -40,42 +45,36 @@ public class ChannelActivity extends AppCompatActivity implements AllTabsAdapter
 
         choseTabs.add("头条");
         choseTabs.add("科技");
-        choseTabs.add("热点");
-        choseTabs.add("政务");
-        choseTabs.add("移动互联");
-        choseTabs.add("军事");
-        choseTabs.add("历史");
-        choseTabs.add("社会");
         choseTabs.add("财经");
-        choseTabs.add("娱乐");
+        choseTabs.add("军事");
+        choseTabs.add("体育");
 
-
-        allTabs.add("体育");
-        allTabs.add("时尚");
         allTabs.add("房产");
+        allTabs.add("足球");
+        allTabs.add("娱乐");
+        allTabs.add("电影");
+        allTabs.add("汽车");
+        allTabs.add("笑话");
+        allTabs.add("游戏");
+        allTabs.add("时尚");
+        allTabs.add("情感");
+        allTabs.add("精选");
+        allTabs.add("电台");
+        allTabs.add("NBA");
+        allTabs.add("数码");
+        allTabs.add("移动");
+        allTabs.add("彩票");
+        allTabs.add("教育");
         allTabs.add("论坛");
+        allTabs.add("旅游");
+        allTabs.add("手机");
         allTabs.add("博客");
-        allTabs.add("健康");
-        allTabs.add("轻松一刻");
-        allTabs.add("直播");
-        allTabs.add("段子");
-        allTabs.add("彩票");
-        allTabs.add("直播");
-        allTabs.add("段子");
-        allTabs.add("彩票");
-        allTabs.add("直播");
-        allTabs.add("段子");
-        allTabs.add("彩票");
-        allTabs.add("轻松一刻");
-        allTabs.add("直播");
-        allTabs.add("段子");
-        allTabs.add("彩票");
-        allTabs.add("直播");
-        allTabs.add("段子");
-        allTabs.add("彩票");
-        allTabs.add("直播");
-        allTabs.add("段子");
-        allTabs.add("彩票");
+        allTabs.add("社会");
+        allTabs.add("家居");
+        allTabs.add("暴雪");
+        allTabs.add("亲子");
+        allTabs.add("CBA");
+        allTabs.add("消息");
 
     }
 
@@ -93,6 +92,7 @@ public class ChannelActivity extends AppCompatActivity implements AllTabsAdapter
         mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                emit();
                 finish();
             }
         });
@@ -114,6 +114,8 @@ public class ChannelActivity extends AppCompatActivity implements AllTabsAdapter
         choseTabsAdapter.setListener(this);
     }
 
+    //点击view拿到当前view的坐标
+
     @Override
     public void allTabsItemClick(View view, int position) {
         allTabs_recyclerView.removeView(view);
@@ -121,6 +123,7 @@ public class ChannelActivity extends AppCompatActivity implements AllTabsAdapter
         allTabs.remove(item);
         choseTabs.add(item);
         choseTabsAdapter.notifyDataSetChanged();
+        emit();
     }
 
     @Override
@@ -130,5 +133,16 @@ public class ChannelActivity extends AppCompatActivity implements AllTabsAdapter
         choseTabs.remove(item);
         allTabs.add(item);
         allTabsAdapter.notifyDataSetChanged();
+    }
+
+    private void tabsItemClickAnimation(View view, int position){
+        final PathMeasure pathMeasure;
+        final float[] mCurrentPosition = new float[2];
+        int parentLoc[] = new int[2];
+    }
+
+    private void emit(){
+        Log.d("EventBus", "choseTabs");
+        EventBus.getDefault().post(new MessageEvent("choseTabs"));
     }
 }

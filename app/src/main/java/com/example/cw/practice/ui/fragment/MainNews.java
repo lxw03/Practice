@@ -7,22 +7,30 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.example.cw.practice.MainActivity;
 import com.example.cw.practice.R;
+import com.example.cw.practice.common.eventBus.MessageEvent;
 import com.example.cw.practice.ui.activity.ChannelActivity;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
+import java.util.ArrayList;
 
 /**
  * Created by chenwei on 17/2/6.
  */
 
-public class MainNews extends Fragment {
+public class MainNews extends Fragment{
 
-    private String[] mTabs = {"tab1", "tab2", "tab3", "tab4", "tab5"};
+    private ArrayList<String> mTabs = new ArrayList<String>();
+
     private Fragment[] mFragments = {new MainMeizi(), new MainVideo(), new MainMeizi(), new MainVideo(), new MainMe()};
 
     private ViewPager mViewPager;
@@ -37,10 +45,15 @@ public class MainNews extends Fragment {
     }
 
     private void initTabs(View view) {
+        mTabs.add("头条");
+        mTabs.add("科技");
+        mTabs.add("财经");
+        mTabs.add("军事");
+        mTabs.add("体育");
         mViewPager = (ViewPager) view.findViewById(R.id.vp_news);
         mTabLayout = (TabLayout) view.findViewById(R.id.tablayout_news);
-        for (int i=0; i<mTabs.length; i++){
-            mTabLayout.addTab(mTabLayout.newTab().setText(mTabs[i]));
+        for (int i=0; i<mTabs.size(); i++){
+            mTabLayout.addTab(mTabLayout.newTab().setText(mTabs.get(i)));
         }
         mTabLayout.setupWithViewPager(mViewPager, true);
         mViewPager.setAdapter(new FragmentStatePagerAdapter(getActivity().getSupportFragmentManager()) {
@@ -51,12 +64,12 @@ public class MainNews extends Fragment {
 
             @Override
             public int getCount() {
-                return mTabs.length;
+                return mTabs.size();
             }
 
             @Override
             public CharSequence getPageTitle(int position) {
-                return mTabs[position];
+                return mTabs.get(position);
             }
         });
 
@@ -69,4 +82,25 @@ public class MainNews extends Fragment {
             }
         });
     }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
+    public void onStop() {
+        EventBus.getDefault().unregister(this);
+        super.onStop();
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onMessageEvent(MessageEvent event){
+        Log.d("111111", event.toString());
+        if (event.equals("choseTabs")){
+            mTabs = ChannelActivity.choseTabs;
+        }
+    }
+
 }
