@@ -1,5 +1,6 @@
 package com.example.cw.practice.ui.activity;
 
+import android.animation.Animator;
 import android.animation.ValueAnimator;
 import android.graphics.Path;
 import android.graphics.PathMeasure;
@@ -20,6 +21,7 @@ import com.example.cw.practice.common.channel.AllTabsAdapter;
 import com.example.cw.practice.common.channel.ChoseTabsAdapter;
 import com.example.cw.practice.common.channel.SpaceItemDecoration;
 import com.example.cw.practice.common.eventBus.MessageEvent;
+import com.example.cw.practice.util.PixelUtil;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -42,6 +44,7 @@ public class ChannelActivity extends AppCompatActivity implements AllTabsAdapter
 
     private Toolbar mToolbar;
     private LinearLayout mLinearLayout;
+    private boolean duringAnimation = false;
 
     private void initData() {
 
@@ -121,7 +124,6 @@ public class ChannelActivity extends AppCompatActivity implements AllTabsAdapter
         mLinearLayout = (LinearLayout) findViewById(R.id.channel_linearLayout);
     }
 
-    //点击view拿到当前view的坐标
 
     @Override
     public void allTabsItemClick(View view, int position) {
@@ -130,21 +132,32 @@ public class ChannelActivity extends AppCompatActivity implements AllTabsAdapter
 //        allTabs.remove(item);
 //        choseTabs.add(item);
 //        choseTabsAdapter.notifyDataSetChanged();
+//        allTabsAdapter.notifyDataSetChanged();
 //        emit();
-        tabsItemClickAnimation(view, position);
+        if (!duringAnimation){
+            tabsItemClickAnimation(view, position);
+        }
     }
 
     @Override
     public void choseTabsItemClick(View view, int position) {
-        choseTabs_recyclerView.removeView(view);
-        String item = choseTabs.get(position);
-        choseTabs.remove(item);
-        allTabs.add(item);
-        allTabsAdapter.notifyDataSetChanged();
+        if (!duringAnimation && choseTabs.get(position) != "头条"){
+            choseTabs_recyclerView.removeView(view);
+            String item = choseTabs.get(position);
+            choseTabs.remove(item);
+            allTabs.add(item);
+            allTabsAdapter.notifyDataSetChanged();
+        }
     }
 
 
-    private void tabsItemClickAnimation(View view, int position){
+    /**
+     * 点击更多频道的动画
+     *
+     * @param view
+     * @param position
+     */
+    private void tabsItemClickAnimation(final View view, final int position){
         final PathMeasure mPathMeasure;
         final float[] mCurrentPosition = new float[2];
         int parentLoc[] = new int[2];
@@ -156,7 +169,6 @@ public class ChannelActivity extends AppCompatActivity implements AllTabsAdapter
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(view.getWidth(), view.getHeight());
         allTabs_recyclerView.removeView(view);
         mLinearLayout.addView(startView, params);
-        Log.e("tag", startView.getWidth() + "#" + startView.getHeight());
 
         final View endView;
         float toX, toY;
@@ -169,8 +181,8 @@ public class ChannelActivity extends AppCompatActivity implements AllTabsAdapter
         } else if (i % 4 == 0) {
             endView = choseTabs_recyclerView.getChildAt(i - 4);
             endView.getLocationInWindow(endLoc);
-            toX = endLoc[0] - parentLoc[0];
-            toY = endLoc[1] + view.getHeight() - parentLoc[1];
+            toX = endLoc[0] - parentLoc[0] - PixelUtil.dip2px(this, 10);
+            toY = endLoc[1] + view.getHeight() - parentLoc[1] + PixelUtil.dip2px(this, 10);
         } else {
             endView = choseTabs_recyclerView.getChildAt(i - 1);
             endView.getLocationInWindow(endLoc);
@@ -178,17 +190,17 @@ public class ChannelActivity extends AppCompatActivity implements AllTabsAdapter
             toY = endLoc[1] - parentLoc[1];
         }
 
-
         float startX = startLoc[0] - parentLoc[0];
         float startY = startLoc[1] - parentLoc[1];
 
         Path mPath = new Path();
         mPath.moveTo(startX, startY);
-        mPath.lineTo(toX, toY);
+        // TODO: 2017/2/7  10dp好像有问题
+        mPath.lineTo(toX + PixelUtil.dip2px(this, 10), toY);
         mPathMeasure = new PathMeasure(mPath, false);
 
         ValueAnimator animator = ValueAnimator.ofFloat(0, mPathMeasure.getLength());
-        animator.setDuration(3000);
+        animator.setDuration(500);
         animator.setInterpolator(new LinearInterpolator());
         animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
@@ -197,12 +209,40 @@ public class ChannelActivity extends AppCompatActivity implements AllTabsAdapter
                 mPathMeasure.getPosTan(value, mCurrentPosition, null);
                 startView.setX(mCurrentPosition[0]);
                 startView.setY(mCurrentPosition[1]);
-                Log.e("tag", mCurrentPosition[0] + "@" + mCurrentPosition[1]);
+            }
+        });
+        animator.addListener(new Animator.AnimatorListener() {
+            @Override
+            public void onAnimationStart(Animator animation) {
+                duringAnimation = true;
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                duringAnimation = false;
+                //记得动画完成后把之前加入的view取消掉
+                mLinearLayout.removeView(startView);
+                String item = allTabs.get(position);
+                allTabs.remove(item);
+                choseTabs.add(item);
+                choseTabsAdapter.notifyDataSetChanged();
+                allTabsAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animation) {
+
             }
         });
         animator.start();
     }
 
+    //// TODO: 2017/2/7 eventbus
     private void emit(){
         Log.d("EventBus", "choseTabs");
         EventBus.getDefault().post(new MessageEvent("choseTabs"));

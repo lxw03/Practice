@@ -1,6 +1,7 @@
 package com.example.cw.practice.common.channel;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -41,7 +42,11 @@ public class ChoseTabsAdapter extends RecyclerView.Adapter{
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         final ChoseTabsViewHolder viewHolder = (ChoseTabsViewHolder) holder;
-        viewHolder.txt.setText(ChannelActivity.choseTabs.get(position));
+        String text = ChannelActivity.choseTabs.get(position);
+        viewHolder.txt.setText(text);
+        if (text == "头条"){
+            viewHolder.txt.setTextColor(Color.WHITE);
+        }
         viewHolder.txt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
