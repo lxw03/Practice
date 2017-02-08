@@ -146,7 +146,7 @@ public class ChannelActivity extends AppCompatActivity implements AllTabsAdapter
 
     @Override
     public void choseTabsItemClick(View view, int position) {
-        if (!duringAnimation && choseTabs.get(position) != "头条"){
+        if (!duringAnimation && !choseTabs.get(position).equals("头条")){
             choseTabs_recyclerView.removeView(view);
             String item = choseTabs.get(position);
             choseTabs.remove(item);
