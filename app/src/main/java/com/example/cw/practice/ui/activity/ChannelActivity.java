@@ -22,6 +22,7 @@ import com.example.cw.practice.common.channel.ChoseTabsAdapter;
 import com.example.cw.practice.common.channel.SpaceItemDecoration;
 import com.example.cw.practice.common.eventBus.MessageEvent;
 import com.example.cw.practice.util.PixelUtil;
+import com.example.cw.practice.util.SharedPreferenceUtil;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -51,12 +52,13 @@ public class ChannelActivity extends AppCompatActivity implements AllTabsAdapter
         allTabs.clear();
         choseTabs.clear();
 
-        choseTabs.add("头条");
-        choseTabs.add("科技");
-        choseTabs.add("财经");
-        choseTabs.add("军事");
-        choseTabs.add("体育");
+        choseTabs = getSavedTabs();
 
+        allTabs.add("头条");
+        allTabs.add("科技");
+        allTabs.add("财经");
+        allTabs.add("军事");
+        allTabs.add("体育");
         allTabs.add("房产");
         allTabs.add("足球");
         allTabs.add("娱乐");
@@ -83,6 +85,9 @@ public class ChannelActivity extends AppCompatActivity implements AllTabsAdapter
         allTabs.add("亲子");
         allTabs.add("CBA");
         allTabs.add("消息");
+        for (int i =0; i<choseTabs.size(); i++){
+            allTabs.remove(choseTabs.get(i));
+        }
 
     }
 
@@ -246,5 +251,33 @@ public class ChannelActivity extends AppCompatActivity implements AllTabsAdapter
     private void emit(){
         Log.d("EventBus", "choseTabs");
         EventBus.getDefault().post(new MessageEvent(choseTabs));
+        saveChoseTabs();
+    }
+
+    private void saveChoseTabs(){
+        String tabs = "";
+        for (int i=0; i<choseTabs.size()-1; i++){
+            tabs = tabs + choseTabs.get(i) + ",";
+        }
+        tabs = tabs + choseTabs.get(choseTabs.size()-1);
+        SharedPreferenceUtil.setItem("channels", this, "choseTabs", tabs);
+    }
+
+    private ArrayList<String> getSavedTabs(){
+        ArrayList<String> tabs = new ArrayList<String>();
+        String value = SharedPreferenceUtil.getItem("channels", this, "choseTabs");
+        if (value == ""){
+            tabs.add("头条");
+            tabs.add("科技");
+            tabs.add("财经");
+            tabs.add("军事");
+            tabs.add("体育");
+        }else {
+            String [] arr = value.split(",");
+            for (int i=0; i<arr.length;i++){
+                tabs.add(arr[i]);
+            }
+        }
+        return  tabs;
     }
 }

@@ -3,6 +3,7 @@ package com.example.cw.practice;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+
 import com.example.cw.practice.ui.fragment.MainMe;
 import com.example.cw.practice.ui.fragment.MainMeizi;
 import com.example.cw.practice.ui.fragment.MainNews;
@@ -10,6 +11,7 @@ import com.example.cw.practice.ui.fragment.MainVideo;
 import com.flyco.tablayout.CommonTabLayout;
 import com.flyco.tablayout.listener.CustomTabEntity;
 import com.flyco.tablayout.listener.OnTabSelectListener;
+
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {

@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import com.example.cw.practice.R;
 import com.example.cw.practice.common.eventBus.MessageEvent;
 import com.example.cw.practice.ui.activity.ChannelActivity;
+import com.example.cw.practice.util.SharedPreferenceUtil;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -46,11 +47,7 @@ public class MainNews extends Fragment{
 
     private void initTabs(View view) {
         //tablayout的tabMode 设置能不能滑动
-        mTabs.add("头条");
-        mTabs.add("科技");
-        mTabs.add("财经");
-        mTabs.add("军事");
-        mTabs.add("体育");
+        mTabs = getSavedTabs();
         mViewPager = (ViewPager) view.findViewById(R.id.vp_news);
         mTabLayout = (TabLayout) view.findViewById(R.id.tablayout_news);
         for (int i=0; i<mTabs.size(); i++){
@@ -94,6 +91,25 @@ public class MainNews extends Fragment{
     public void onMessageEvent(MessageEvent event){
         mTabs = event.getMessage();
         mViewPager.getAdapter().notifyDataSetChanged();
+    }
+
+
+    private ArrayList<String> getSavedTabs(){
+        ArrayList<String> tabs = new ArrayList<String>();
+        String value = SharedPreferenceUtil.getItem("channels", getActivity(), "choseTabs");
+        if (value == ""){
+            tabs.add("头条");
+            tabs.add("科技");
+            tabs.add("财经");
+            tabs.add("军事");
+            tabs.add("体育");
+        }else {
+            String [] arr = value.split(",");
+            for (int i=0; i<arr.length;i++){
+                tabs.add(arr[i]);
+            }
+        }
+        return  tabs;
     }
 
 }
