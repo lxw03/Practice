@@ -7,7 +7,6 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,10 +40,12 @@ public class MainNews extends Fragment{
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.news_main, container, false);
         initTabs(view);
+        EventBus.getDefault().register(this);
         return view;
     }
 
     private void initTabs(View view) {
+        //tablayout的tabMode 设置能不能滑动
         mTabs.add("头条");
         mTabs.add("科技");
         mTabs.add("财经");
@@ -84,23 +85,15 @@ public class MainNews extends Fragment{
     }
 
     @Override
-    public void onStart() {
-        super.onStart();
-        EventBus.getDefault().register(this);
-    }
-
-    @Override
-    public void onStop() {
+    public void onDestroy() {
         EventBus.getDefault().unregister(this);
-        super.onStop();
+        super.onDestroy();
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onMessageEvent(MessageEvent event){
-        Log.d("111111", event.toString());
-        if (event.equals("choseTabs")){
-            mTabs = ChannelActivity.choseTabs;
-        }
+        mTabs = event.getMessage();
+        mViewPager.getAdapter().notifyDataSetChanged();
     }
 
 }

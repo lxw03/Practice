@@ -245,6 +245,6 @@ public class ChannelActivity extends AppCompatActivity implements AllTabsAdapter
     //// TODO: 2017/2/7 eventbus
     private void emit(){
         Log.d("EventBus", "choseTabs");
-        EventBus.getDefault().post(new MessageEvent("choseTabs"));
+        EventBus.getDefault().post(new MessageEvent(choseTabs));
     }
 }
