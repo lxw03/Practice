@@ -247,7 +247,7 @@ public class ChannelActivity extends AppCompatActivity implements AllTabsAdapter
         animator.start();
     }
 
-    //// TODO: 2017/2/7 eventbus
+    // TODO: 2017/2/7 eventbus
     private void emit(){
         Log.d("EventBus", "choseTabs");
         EventBus.getDefault().post(new MessageEvent(choseTabs));
@@ -279,5 +279,11 @@ public class ChannelActivity extends AppCompatActivity implements AllTabsAdapter
             }
         }
         return  tabs;
+    }
+
+    @Override
+    public void onBackPressed() {
+        emit();
+        super.onBackPressed();
     }
 }

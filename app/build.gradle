@@ -54,4 +54,6 @@ dependencies {
 
     //事件总线
     compile 'org.greenrobot:eventbus:3.0.0'
+
+//    compile 'com.marshalchen.ultimaterecyclerview:library:0.7.0'
 }
