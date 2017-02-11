@@ -1,4 +1,4 @@
-package com.example.cw.practice.common.news.common;
+package com.example.cw.practice.common.news;
 
 import android.content.Context;
 import android.support.annotation.Nullable;

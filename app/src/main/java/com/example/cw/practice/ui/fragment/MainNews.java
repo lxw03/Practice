@@ -14,7 +14,7 @@ import android.widget.ImageView;
 
 import com.example.cw.practice.R;
 import com.example.cw.practice.common.eventBus.MessageEvent;
-import com.example.cw.practice.common.news.NewsFragment;
+import com.example.cw.practice.ui.news.NewsFragment;
 import com.example.cw.practice.ui.activity.ChannelActivity;
 import com.example.cw.practice.util.SharedPreferenceUtil;
 

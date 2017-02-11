@@ -10,11 +10,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.example.cw.practice.common.news.common.NewsRecyclerView
+        <com.example.cw.practice.common.news.NewsRecyclerView
             android:id="@+id/news_recyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-        </com.example.cw.practice.common.news.common.NewsRecyclerView>
+        </com.example.cw.practice.common.news.NewsRecyclerView>
     </android.support.v4.widget.SwipeRefreshLayout>
 
 </LinearLayout>

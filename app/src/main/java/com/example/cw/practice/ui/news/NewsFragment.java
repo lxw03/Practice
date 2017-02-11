@@ -1,4 +1,4 @@
-package com.example.cw.practice.common.news;
+package com.example.cw.practice.ui.news;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.cw.practice.R;
-import com.example.cw.practice.common.news.common.NewsRecyclerView;
+import com.example.cw.practice.common.news.NewsRecyclerView;
 
 import java.util.ArrayList;
 import java.util.Random;

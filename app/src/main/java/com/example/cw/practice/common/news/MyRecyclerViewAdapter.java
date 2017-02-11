@@ -1,4 +1,4 @@
-package com.example.cw.practice.common.news.common;
+package com.example.cw.practice.common.news;
 
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
