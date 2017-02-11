@@ -14,6 +14,7 @@ import android.widget.ImageView;
 
 import com.example.cw.practice.R;
 import com.example.cw.practice.common.eventBus.MessageEvent;
+import com.example.cw.practice.common.news.NewsFragment;
 import com.example.cw.practice.ui.activity.ChannelActivity;
 import com.example.cw.practice.util.SharedPreferenceUtil;
 
@@ -31,7 +32,7 @@ public class MainNews extends Fragment{
 
     private ArrayList<String> mTabs = new ArrayList<String>();
 
-    private Fragment[] mFragments = {new MainMeizi(), new MainVideo(), new MainMeizi(), new MainVideo(), new MainMe()};
+    private Fragment[] mFragments = {new NewsFragment(), new MainVideo(), new MainMeizi(), new MainVideo(), new MainMe()};
 
     private ViewPager mViewPager;
     private TabLayout mTabLayout;
