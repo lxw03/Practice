@@ -6,11 +6,9 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.example.cw.practice.R;
 import com.example.cw.practice.common.news.common.NewsRecyclerView;
@@ -27,7 +25,7 @@ public class NewsFragment extends Fragment{
     private SwipeRefreshLayout mSwipeRefreshLayout;
     private NewsRecyclerView mRecyclerView;
     private ArrayList<String> integerList = new ArrayList<>();
-    private MyAdapter mNewsAdapter;
+    private NewsAdapter mNewsAdapter;
     private Handler mHandler = new Handler();
 
     @Nullable
@@ -43,7 +41,7 @@ public class NewsFragment extends Fragment{
         mRecyclerView = (NewsRecyclerView) view.findViewById(R.id.news_recyclerView);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        mNewsAdapter = new MyAdapter();
+        mNewsAdapter = new NewsAdapter(integerList, getActivity());
 
         mRecyclerView.setMyLoadListener(new NewsRecyclerView.MyLoadListener() {
             @Override
@@ -102,34 +100,5 @@ public class NewsFragment extends Fragment{
                 mSwipeRefreshLayout.setRefreshing(false);
             }
         }, 2000);
-    }
-
-    public class MyAdapter extends RecyclerView.Adapter<NewsFragment.MyAdapter.MyViewHolder>{
-
-        @Override
-        public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            View rootView = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_news_item, null, false);
-            return new MyViewHolder(rootView);
-        }
-
-        @Override
-        public void onBindViewHolder(MyViewHolder holder, int position) {
-            holder.txt.setText(integerList.get(position));
-        }
-
-        @Override
-        public int getItemCount() {
-            return integerList.size();
-        }
-
-        public class MyViewHolder extends RecyclerView.ViewHolder {
-            TextView txt;
-
-            public MyViewHolder(View itemView) {
-                super(itemView);
-                txt = (TextView) itemView.findViewById(R.id.fragment_news_text);
-
-            }
-        }
     }
 }
