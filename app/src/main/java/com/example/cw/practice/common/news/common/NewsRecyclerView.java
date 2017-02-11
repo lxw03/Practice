@@ -58,7 +58,7 @@ public class NewsRecyclerView extends RecyclerView {
                     int lastVisibleItem = manager.findLastCompletelyVisibleItemPosition();
                     int totalItemCount = manager.getItemCount();
                     //判断在底部并且不在 加载 状态
-                    if ((lastVisibleItem == totalItemCount -1) && isLoadMore){
+                    if ((lastVisibleItem == totalItemCount -1) && !isLoadMore){
                         isLoadMore = true;
                         loadText.setText("正在加载");
                         footerView.setVisibility(VISIBLE);

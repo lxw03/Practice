@@ -22,8 +22,8 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder> 
     private LayoutInflater mLayoutInflater;
 
     public NewsAdapter(ArrayList<String> arrayList, Context context) {
-        mArrayList = arrayList;
-        mContext = context;
+        this.mArrayList = arrayList;
+        this.mContext = context;
         mLayoutInflater = LayoutInflater.from(context);
     }
 

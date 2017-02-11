@@ -1,6 +1,7 @@
 package com.example.cw.practice.common.news.common;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -17,7 +18,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     private View footerView;
 
     public MyRecyclerViewAdapter(RecyclerView.Adapter adapter) {
-        mAdapter = adapter;
+         this.mAdapter = adapter;
     }
 
     @Override
@@ -42,7 +43,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        if (position == mAdapter.getItemCount()-1){
+        if (position == getItemCount()-1){
             return;
         }else {
             mAdapter.onBindViewHolder(holder, position);
