@@ -9,6 +9,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.View;
+import android.view.animation.DecelerateInterpolator;
 
 
 /**
@@ -41,8 +42,8 @@ public class AnimView  extends View{
     }
 
     private void startAnimation() {
-        Point startPoint = new Point(RADIUS, RADIUS);
-        Point endPoint = new Point(getWidth()-RADIUS, getHeight()-RADIUS);
+        Point startPoint = new Point(getWidth()/2, RADIUS);
+        Point endPoint = new Point(getWidth()/2, getHeight()-RADIUS);
         ValueAnimator anim = ValueAnimator.ofObject(new PointEvaluator(), startPoint, endPoint);
         anim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
@@ -54,6 +55,11 @@ public class AnimView  extends View{
         ObjectAnimator anim2 = ObjectAnimator.ofObject(this, "color", new ColorEvaluator(), "#0000FF", "#FF0000");
         AnimatorSet animSet = new AnimatorSet();
         animSet.play(anim).with(anim2);
+        //TimeInterpolator
+        //其中getInterpolatiion接受一个参数input
+//        animSet.setInterpolator(new AccelerateInterpolator(2f));
+//        animSet.setInterpolator(new BounceInterpolator());
+        animSet.setInterpolator(new DecelerateInterpolator());
         animSet.setDuration(5000);
         animSet.start();
     }

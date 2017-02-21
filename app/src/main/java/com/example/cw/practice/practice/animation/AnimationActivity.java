@@ -39,6 +39,14 @@ public class AnimationActivity extends AppCompatActivity {
                 ObjectAnimator moveIn = ObjectAnimator.ofFloat(mTextView, "translationX", -500f, 0f);
                 ObjectAnimator rotate = ObjectAnimator.ofFloat(mTextView, "rotation", 0f, 360f);
                 ObjectAnimator fadeInOut = ObjectAnimator.ofFloat(mTextView, "alpha", 1f, 0f, 1f);
+//                mTextView.animate().alpha(0f);
+//                mTextView.animate()返回一个ViewPropertyAnimator对象，拿到这个对象就可以调用这个对象的各种方法来实现动画
+//                mTextView.animate()
+//                        .x(500)
+//                        .y(500)
+//                        .setDuration(5000)
+//                        .setInterpolator(new LinearInterpolator());
+
                 AnimatorSet animSet = new AnimatorSet();
                 animSet.play(fadeInOut).with(rotate).after(moveIn);
                 animSet.setDuration(5000);
