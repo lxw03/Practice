@@ -17,6 +17,8 @@
         </activity>
         <activity android:name=".ui.activity.SplashActivity"/>
         <activity android:name=".ui.activity.ChannelActivity"/>
+        <activity android:name=".practice.animation.AnimationActivity"/>
+        <activity android:name=".practice.animation.TypeEvaluatorActivity"/>
     </application>
 
 </manifest>
