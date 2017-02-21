@@ -2,7 +2,6 @@ package com.example.cw.practice.practice.animation;
 
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
-import android.animation.PointFEvaluator;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.graphics.Canvas;
@@ -54,9 +53,9 @@ public class AnimView  extends View{
         });
         ObjectAnimator anim2 = ObjectAnimator.ofObject(this, "color", new ColorEvaluator(), "#0000FF", "#FF0000");
         AnimatorSet animSet = new AnimatorSet();
-//        animSet.play(anim).with(anim2);
+        animSet.play(anim).with(anim2);
         animSet.setDuration(5000);
-        anim2.start();
+        animSet.start();
     }
 
     private void drawCircle(Canvas canvas) {

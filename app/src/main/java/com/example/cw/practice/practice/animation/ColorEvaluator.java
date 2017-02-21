@@ -27,13 +27,13 @@ public class ColorEvaluator implements TypeEvaluator {
         int endBlue = Integer.parseInt(endColor.substring(5,7), 16);
 
         //初始化颜色的值
-        if (mCurrentRed != -1){
+        if (mCurrentRed == -1){
             mCurrentRed = startRed;
         }
-        if (mCurrentGreen != -1){
+        if (mCurrentGreen == -1){
             mCurrentGreen = startGreen;
         }
-        if (mCurrentBlue != -1){
+        if (mCurrentBlue == -1){
             mCurrentBlue = startBlue;
         }
         //计算初始值和结束颜色之间的差异
