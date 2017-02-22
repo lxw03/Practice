@@ -19,6 +19,7 @@
         <activity android:name=".ui.activity.ChannelActivity"/>
         <activity android:name=".practice.animation.AnimationActivity"/>
         <activity android:name=".practice.animation.TypeEvaluatorActivity"/>
+        <activity android:name=".practice.notification.NotificationActivity"/>
     </application>
 
 </manifest>

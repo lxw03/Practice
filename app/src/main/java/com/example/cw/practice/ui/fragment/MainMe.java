@@ -12,6 +12,7 @@ import android.widget.Button;
 import com.example.cw.practice.R;
 import com.example.cw.practice.practice.animation.AnimationActivity;
 import com.example.cw.practice.practice.animation.TypeEvaluatorActivity;
+import com.example.cw.practice.practice.notification.NotificationActivity;
 
 /**
  * Created by chenwei on 17/2/6.
@@ -20,6 +21,7 @@ import com.example.cw.practice.practice.animation.TypeEvaluatorActivity;
 public class MainMe extends Fragment{
     private Button btn1;
     private Button btn2;
+    private Button btn3;
 
     @Nullable
     @Override
@@ -48,6 +50,14 @@ public class MainMe extends Fragment{
             }
         });
 
+        btn3 = (Button) view.findViewById(R.id.me_btn3);
+        btn3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), NotificationActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
 }
