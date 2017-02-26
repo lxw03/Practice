@@ -56,4 +56,10 @@ dependencies {
     compile 'org.greenrobot:eventbus:3.0.0'
 
 //    compile 'com.marshalchen.ultimaterecyclerview:library:0.7.0'
+
+    //字幕
+    compile 'com.github.ctiao:DanmakuFlameMaster:0.6.4'
+    compile 'com.github.ctiao:ndkbitmap-armv7a:0.6.4'
+
+
 }
