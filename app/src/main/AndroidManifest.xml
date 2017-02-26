@@ -21,6 +21,7 @@
         <activity android:name=".practice.animation.TypeEvaluatorActivity"/>
         <activity android:name=".practice.notification.NotificationActivity"/>
         <activity android:name=".practice.statusBar.StatusBarActivity"/>
+        <activity android:name=".practice.snackbar.SnackbarActivity"/>
     </application>
 
 </manifest>
