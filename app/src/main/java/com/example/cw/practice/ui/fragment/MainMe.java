@@ -13,6 +13,7 @@ import com.example.cw.practice.R;
 import com.example.cw.practice.practice.animation.AnimationActivity;
 import com.example.cw.practice.practice.animation.TypeEvaluatorActivity;
 import com.example.cw.practice.practice.notification.NotificationActivity;
+import com.example.cw.practice.practice.statusBar.StatusBarActivity;
 
 /**
  * Created by chenwei on 17/2/6.
@@ -22,6 +23,7 @@ public class MainMe extends Fragment{
     private Button btn1;
     private Button btn2;
     private Button btn3;
+    private Button btn4;
 
     @Nullable
     @Override
@@ -55,6 +57,14 @@ public class MainMe extends Fragment{
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), NotificationActivity.class);
+                startActivity(intent);
+            }
+        });
+        btn4 = (Button) view.findViewById(R.id.me_btn4);
+        btn4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), StatusBarActivity.class);
                 startActivity(intent);
             }
         });

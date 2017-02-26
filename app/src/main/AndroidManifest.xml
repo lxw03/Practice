@@ -20,6 +20,7 @@
         <activity android:name=".practice.animation.AnimationActivity"/>
         <activity android:name=".practice.animation.TypeEvaluatorActivity"/>
         <activity android:name=".practice.notification.NotificationActivity"/>
+        <activity android:name=".practice.statusBar.StatusBarActivity"/>
     </application>
 
 </manifest>
