@@ -140,6 +140,7 @@ public class DanmakuActivity extends AppCompatActivity {
         }).start();
     }
 
+    //添加弹幕
     private void addDanmaku(String content, boolean withBorder) {
         BaseDanmaku danmaku = danmakuContext.mDanmakuFactory.createDanmaku(BaseDanmaku.TYPE_SCROLL_RL);
         danmaku.text = content;
