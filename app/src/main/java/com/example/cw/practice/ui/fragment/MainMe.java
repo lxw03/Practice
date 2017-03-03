@@ -14,6 +14,7 @@ import com.example.cw.practice.practice.animation.AnimationActivity;
 import com.example.cw.practice.practice.animation.TypeEvaluatorActivity;
 import com.example.cw.practice.practice.danmaku.DanmakuActivity;
 import com.example.cw.practice.practice.notification.NotificationActivity;
+import com.example.cw.practice.practice.percentLayout.PercentRelativeLayoutActivity;
 import com.example.cw.practice.practice.snackbar.SnackbarActivity;
 import com.example.cw.practice.practice.statusBar.StatusBarActivity;
 
@@ -28,6 +29,7 @@ public class MainMe extends Fragment{
     private Button btn4;
     private Button btn5;
     private Button btn6;
+    private Button btn7;
 
     @Nullable
     @Override
@@ -85,6 +87,14 @@ public class MainMe extends Fragment{
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), DanmakuActivity.class);
+                startActivity(intent);
+            }
+        });
+        btn7 = (Button) view.findViewById(R.id.me_btn7);
+        btn7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), PercentRelativeLayoutActivity.class);
                 startActivity(intent);
             }
         });

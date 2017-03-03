@@ -30,6 +30,7 @@
                   android:screenOrientation="landscape"
                   android:configChanges="orientation|keyboardHidden|screenLayout|screenSize"
             />
+        <activity android:name=".practice.percentLayout.PercentRelativeLayoutActivity"/>
     </application>
 
 </manifest>
