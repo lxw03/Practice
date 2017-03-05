@@ -36,4 +36,10 @@ public class StatusBarUtil {
         }
     }
 
+    //设置状态栏颜色
+    public static void setStatusBarColor(Activity activity, int color){
+        if (Build.VERSION.SDK_INT > 21){
+            activity.getWindow().setStatusBarColor(color);
+        }
+    }
 }

@@ -9,6 +9,7 @@ import com.example.cw.practice.ui.fragment.MainMeizi;
 import com.example.cw.practice.ui.fragment.MainMore;
 import com.example.cw.practice.ui.fragment.MainNews;
 import com.example.cw.practice.ui.fragment.MainVideo;
+import com.example.cw.practice.util.StatusBarUtil;
 import com.flyco.tablayout.CommonTabLayout;
 import com.flyco.tablayout.listener.CustomTabEntity;
 import com.flyco.tablayout.listener.OnTabSelectListener;
@@ -37,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        StatusBarUtil.setStatusBarColor(this, getColor(R.color.main_color));
         initViews(savedInstanceState);
     }
 

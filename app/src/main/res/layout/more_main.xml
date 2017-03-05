@@ -46,7 +46,7 @@
             android:background="@color/toast_stroke_gray"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:text="因果主页"
+            android:text="practice主页"
             android:gravity="center_vertical"
             android:paddingLeft="20dp"
             />
@@ -108,7 +108,7 @@
             android:background="@color/toast_stroke_gray"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:text="因果社群"
+            android:text="practice社群"
             android:gravity="center_vertical"
             android:paddingLeft="20dp"
             />
@@ -132,7 +132,7 @@
                 android:id="@+id/more_manageteam_txt"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
-                android:text="管理主页"
+                android:text="管理社群"
                 android:layout_toRightOf="@+id/more_manageteam_img"
                 android:gravity="center"
                 />
@@ -159,7 +159,7 @@
                 android:id="@+id/more_createteam_txt"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
-                android:text="创建主页"
+                android:text="创建社群"
                 android:layout_toRightOf="@id/more_createteam_img"
                 android:layout_below="@id/more_team_divider"
                 android:gravity="center"

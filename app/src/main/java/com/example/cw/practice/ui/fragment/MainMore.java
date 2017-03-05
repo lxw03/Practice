@@ -6,6 +6,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import com.example.cw.practice.R;
 
@@ -14,6 +16,8 @@ import com.example.cw.practice.R;
  */
 
 public class MainMore extends Fragment {
+    private ImageView personal_avatar;
+    private RelativeLayout homepage_layout, team_layout, personal_layout;
 
     @Nullable
     @Override
@@ -24,5 +28,9 @@ public class MainMore extends Fragment {
     }
 
     private void initViews(View view) {
+        personal_avatar = (ImageView) view.findViewById(R.id.more_personal_avatar);
+        personal_layout = (RelativeLayout) view.findViewById(R.id.more_personal);
+        homepage_layout = (RelativeLayout) view.findViewById(R.id.more_homepage);
+        team_layout = (RelativeLayout) view.findViewById(R.id.more_team);
     }
 }
