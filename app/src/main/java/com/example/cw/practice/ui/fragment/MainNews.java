@@ -14,8 +14,8 @@ import android.widget.ImageView;
 
 import com.example.cw.practice.R;
 import com.example.cw.practice.common.eventBus.MessageEvent;
-import com.example.cw.practice.ui.news.NewsFragment;
 import com.example.cw.practice.ui.activity.ChannelActivity;
+import com.example.cw.practice.ui.news.NewsFragment;
 import com.example.cw.practice.util.SharedPreferenceUtil;
 
 import org.greenrobot.eventbus.EventBus;
@@ -23,6 +23,7 @@ import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Created by chenwei on 17/2/6.
@@ -32,7 +33,8 @@ public class MainNews extends Fragment{
 
     private ArrayList<String> mTabs = new ArrayList<String>();
 
-    private Fragment[] mFragments = {new NewsFragment(), new MainVideo(), new MainMeizi(), new MainVideo(), new MainMe()};
+    private ArrayList<Fragment> mFragments = new ArrayList<Fragment>();
+    private HashMap<String, Fragment> fragments = new HashMap<String, Fragment>();
 
     private ViewPager mViewPager;
     private TabLayout mTabLayout;
@@ -49,16 +51,28 @@ public class MainNews extends Fragment{
     private void initTabs(View view) {
         //tablayout的tabMode 设置能不能滑动
         mTabs = getSavedTabs();
+        mFragments.clear();
+        fragments.clear();
         mViewPager = (ViewPager) view.findViewById(R.id.vp_news);
         mTabLayout = (TabLayout) view.findViewById(R.id.tablayout_news);
         for (int i=0; i<mTabs.size(); i++){
             mTabLayout.addTab(mTabLayout.newTab().setText(mTabs.get(i)));
+
+            //you should call it immediately after constructing the fragment
+            NewsFragment newsFragment = new NewsFragment();
+            Bundle bundle = new Bundle();
+            bundle.putString("name", mTabs.get(i));
+            newsFragment.setArguments(bundle);
+            mFragments.add(newsFragment);
+            fragments.put(mTabs.get(i),newsFragment);
+
         }
         mTabLayout.setupWithViewPager(mViewPager, true);
         mViewPager.setAdapter(new FragmentStatePagerAdapter(getActivity().getSupportFragmentManager()) {
             @Override
             public Fragment getItem(int position) {
-                return mFragments[position];
+//                return mFragments.get(position);
+                return fragments.get(mTabs.get(position));
             }
 
             @Override
@@ -90,8 +104,39 @@ public class MainNews extends Fragment{
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onMessageEvent(MessageEvent event){
-        mTabs = event.getMessage();
-        mViewPager.getAdapter().notifyDataSetChanged();
+        boolean channelHasChanged = !event.getMessage().equals(mTabs);
+        if (channelHasChanged){
+            mTabs = event.getMessage();
+            mFragments.clear();
+            fragments.clear();
+            for (int i=0; i<mTabs.size(); i++){
+                NewsFragment newsFragment = new NewsFragment();
+                Bundle bundle = new Bundle();
+                bundle.putString("name", mTabs.get(i));
+                newsFragment.setArguments(bundle);
+                mFragments.add(newsFragment);
+                fragments.put(mTabs.get(i),newsFragment);
+            }
+            // TODO: 2017/3/5  这个地方有问题 直接修改fragments  viewPager.getAdapter().notifyDataChanged 有bug
+            // 暂时先直接设置Adapter
+            mViewPager.setAdapter(new FragmentStatePagerAdapter(getActivity().getSupportFragmentManager()) {
+                @Override
+                public Fragment getItem(int position) {
+//                return mFragments.get(position);
+                    return fragments.get(mTabs.get(position));
+                }
+
+                @Override
+                public int getCount() {
+                    return mTabs.size();
+                }
+
+                @Override
+                public CharSequence getPageTitle(int position) {
+                    return mTabs.get(position);
+                }
+            });
+        }
     }
 
 

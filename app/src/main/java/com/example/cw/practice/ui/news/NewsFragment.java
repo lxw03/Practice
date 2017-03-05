@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,15 +29,18 @@ public class NewsFragment extends Fragment{
     private NewsAdapter mNewsAdapter;
     private Handler mHandler = new Handler();
 
+    private String name;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_news, null, false);
+        Bundle bundle = this.getArguments();
+        name = bundle.getString("name");
         initViews(view);
         return view;
     }
 
-    private void initViews(View view) {
+    private void initViews(final View view) {
         mSwipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.news_refreshLayout);
         mRecyclerView = (NewsRecyclerView) view.findViewById(R.id.news_recyclerView);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -49,11 +53,13 @@ public class NewsFragment extends Fragment{
                 mHandler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        if (integerList.size() > 15){
+                        if (integerList.size() > 1000){
                             mRecyclerView.setLoadMore(true);
                         }else {
-                            int randomInt = new Random().nextInt(100);
-                            integerList.add(String.valueOf(randomInt));
+                            for (int i=0;i<12;i++){
+                                int randomInt = new Random().nextInt(100);
+                                integerList.add(String.valueOf(name + randomInt));
+                            }
                             mNewsAdapter.notifyDataSetChanged();
                             mRecyclerView.setLoadMore(false);
                         }
@@ -84,9 +90,10 @@ public class NewsFragment extends Fragment{
     private void getData(){
         integerList.clear();
         Random random = new Random();
+        Log.d("111111",name);
         while (integerList.size()<12){
             int randomInt = random.nextInt(100);
-            integerList.add(String.valueOf(randomInt));
+            integerList.add(String.valueOf(name + randomInt));
         }
     }
 
