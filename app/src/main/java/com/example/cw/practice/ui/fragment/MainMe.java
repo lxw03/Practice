@@ -115,9 +115,7 @@ public class MainMe extends Fragment{
         btn8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                checkCameraPermission();
-                Intent intent = new Intent(getContext(), FaceTestActivity.class);
-                startActivity(intent);
+                checkCameraPermission();
             }
         });
 
@@ -125,19 +123,34 @@ public class MainMe extends Fragment{
 
     @TargetApi(Build.VERSION_CODES.M)
     public void checkCameraPermission(){
-        if (ContextCompat.checkSelfPermission(getActivity(), android.Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED){
-            if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), android.Manifest.permission.CAMERA)){
-                new AlertDialog.Builder(getActivity())
-                        .setMessage("申请相机权限")
-                        .setPositiveButton("确定", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CAMERA}, 1);
-                            }
-                        }).show();
-            }else {
-                ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CAMERA}, 1);
-            }
+//        if (ContextCompat.checkSelfPermission(getActivity(), android.Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED){
+//            if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), android.Manifest.permission.CAMERA)){
+//                new AlertDialog.Builder(getActivity())
+//                        .setMessage("申请相机权限")
+//                        .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialog, int which) {
+//                                ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CAMERA}, 1);
+//                                Intent intent = new Intent(getContext(), FaceTestActivity.class);
+//                                startActivity(intent);
+//                            }
+//                        }).show();
+//            }else {
+//                ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CAMERA}, 1);
+//                Intent intent = new Intent(getContext(), FaceTestActivity.class);
+//                startActivity(intent);
+//            }
+//        }
+
+        int cameraPermission = ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.CAMERA);
+        if (cameraPermission == PackageManager.PERMISSION_GRANTED){
+//            Toast.makeText(getActivity(), "已经有这个权限", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(getContext(), FaceTestActivity.class);
+            startActivity(intent);
+        }else {
+            Toast.makeText(getActivity(), "还没有这个权限", Toast.LENGTH_SHORT).show();
+            //去申请权限
+            ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CAMERA}, 1);
         }
     }
 
