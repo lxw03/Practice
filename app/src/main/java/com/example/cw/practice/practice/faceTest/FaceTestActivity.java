@@ -1,6 +1,12 @@
 package com.example.cw.practice.practice.faceTest;
 
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Matrix;
+import android.graphics.Paint;
 import android.graphics.PixelFormat;
+import android.graphics.PorterDuff;
+import android.graphics.RectF;
 import android.hardware.Camera;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -27,18 +33,31 @@ public class FaceTestActivity extends AppCompatActivity implements SurfaceHolder
     private android.hardware.Camera mCamera;
     private SurfaceView mAfterView, mBeforeView;
     private SurfaceHolder mAfterHolder, mBeforeHolder;
+    private Paint mPaint;
+    private int mViewWidth, mViewHeight;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_facetest);
+        initPaint();
         setSurfaceViews();
+    }
+
+    private void initPaint(){
+        mPaint = new Paint();
+        mPaint.setAntiAlias(true);
+        mPaint.setColor(Color.RED);
+        mPaint.setStyle(Paint.Style.STROKE);
+        mPaint.setStrokeWidth(5f);
     }
 
     private void setSurfaceViews(){
         //为了不产生相机拉伸，设置布局宽高比
         Display defaultDisplay = getWindow().getWindowManager().getDefaultDisplay();
         int width = defaultDisplay.getWidth();
+        mViewWidth = width;
         int height = defaultDisplay.getHeight();
+        mViewHeight = height;
 //        int height = width * 4/3;
         findViewById(R.id.face_container).setLayoutParams(new FrameLayout.LayoutParams(width,height));
 
@@ -95,14 +114,48 @@ public class FaceTestActivity extends AppCompatActivity implements SurfaceHolder
 
     @Override
     public void surfaceDestroyed(SurfaceHolder holder) {
-        mCamera.startPreview();
+        mCamera.stopFaceDetection();
+        mCamera.stopPreview();
         mCamera.release();
     }
 
     @Override
     public void onFaceDetection(Camera.Face[] faces, Camera camera) {
-        Log.d("111111", String.valueOf(faces.length));
+//        Log.d("111111", String.valueOf(faces.length));
+
+        //锁定surface并拿到canvas
+        Canvas canvas = mBeforeHolder.lockCanvas();
+        canvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);//清除上次的绘制
+        if (faces.length < 1){
+            mBeforeHolder.unlockCanvasAndPost(canvas);
+            return;
+        }
+        Matrix matrix = new Matrix();
+        prepareMatrix(matrix, false, 90, mViewWidth, mViewHeight);
+
+        for (int i=0; i<faces.length; i++){
+            RectF rect = new RectF(faces[i].rect);
+            matrix.mapRect(rect);
+            canvas.drawRect(rect,mPaint);
+        }
+
+        //更新canvas并解锁
+        mBeforeHolder.unlockCanvasAndPost(canvas);
     }
 
     //要考虑6.0以上的运行时权限
+
+    public void prepareMatrix(Matrix matrix, boolean isMirror, int displayOrientation, int viewWidth, int viewHeight){
+        matrix.setScale(isMirror? -1:1, 1);
+        matrix.postRotate(displayOrientation);
+        matrix.postScale(viewWidth/ 2000f, viewHeight/2000f);
+        matrix.postTranslate(viewWidth/ 2f, viewHeight/2f);
+    }
+
+    @Override
+    public void onBackPressed() {
+        //返回前要停止识别人脸
+        mCamera.stopFaceDetection();
+        super.onBackPressed();
+    }
 }
