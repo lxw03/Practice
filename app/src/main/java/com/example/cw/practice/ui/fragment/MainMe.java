@@ -150,14 +150,17 @@ public class MainMe extends Fragment{
         }else {
             Toast.makeText(getActivity(), "还没有这个权限", Toast.LENGTH_SHORT).show();
             //去申请权限
-            ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CAMERA}, 1);
+            //fragment中申请权限
+            MainMe.this.requestPermissions(new String[]{Manifest.permission.CAMERA}, 1);
+            //区别
+            //在Activity中申请权限
+//            ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CAMERA}, 1);
         }
     }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        Log.d("111111", String.valueOf(requestCode));
         if (requestCode == 1){
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED){
                 Intent intent = new Intent(getContext(), FaceTestActivity.class);
