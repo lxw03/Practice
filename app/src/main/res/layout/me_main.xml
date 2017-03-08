@@ -48,6 +48,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Percent Test"/>
+            <Button
+                android:id="@+id/me_btn8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Face Test"/>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
