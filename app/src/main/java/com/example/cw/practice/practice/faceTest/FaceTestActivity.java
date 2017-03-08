@@ -28,6 +28,13 @@ import java.util.List;
 
 //surfaceView和View最本质的区别在于，surfaceView是在一个新起的单独线程中可以重新绘制画面而View必须在UI线程中更新画面.
 //使用surfaceView 由于是在新的线程中更新画面所以不会阻塞UI线程，但也带来了另外一个问题，就是事件同步
+
+    //缺点：surfaceView不在view hierachy中，它的显示不受view属性的控制，所以不能进行平移，缩放等操作，也不能放在其它viewGroup中，一些view中的特性也无法使用
+    //优点：独立线程绘制，不影响主线程，使用双缓冲机制，播放视频时更流畅
+
+    //SurfaceView在更新视图时用到了两张Canvas，一张frontCanvas，一张backCanvas,每次实际显示的frontCanvas, backCanvas存储的是上一次更改前的视图。
+    //当使用lockCanvas获取画布时，实际上得到backCanvas而不是正在显示的frontCanvas, 之后在获取到的backCanvas上绘制新视图，再unLockCanvasAndPost此视图
+    //那么上传的这张canvas将替换原来的frontCanvas作为新的frontCanvas，原来的frontCanvas将切换到后台作为backCanvas
 public class FaceTestActivity extends AppCompatActivity implements SurfaceHolder.Callback, Camera.FaceDetectionListener{
 
     private android.hardware.Camera mCamera;
