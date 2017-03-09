@@ -1,5 +1,6 @@
 package com.example.cw.practice;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -156,5 +157,13 @@ public class MainActivity extends AppCompatActivity {
             default:
                 break;
         }
+    }
+
+
+    // android:configChanges="keyboardHidden|orientation|screenSize"
+    // 设置了后，屏幕旋转等操作不会触发Activity重新创建，onSaveInstanceState不会被执行,取而代之的是onConfigurationChanged会被调用，可以在这个方法里做一些处理
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
     }
 }
