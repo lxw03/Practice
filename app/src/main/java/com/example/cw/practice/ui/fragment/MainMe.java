@@ -5,8 +5,10 @@ import android.annotation.TargetApi;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
@@ -29,6 +31,9 @@ import com.example.cw.practice.practice.notification.NotificationActivity;
 import com.example.cw.practice.practice.percentLayout.PercentRelativeLayoutActivity;
 import com.example.cw.practice.practice.snackbar.SnackbarActivity;
 import com.example.cw.practice.practice.statusBar.StatusBarActivity;
+import com.example.cw.practice.practice.windowManager.WindowManagerActivity;
+
+import static android.content.ContentValues.TAG;
 
 /**
  * Created by chenwei on 17/2/6.
@@ -43,6 +48,7 @@ public class MainMe extends Fragment{
     private Button btn6;
     private Button btn7;
     private Button btn8;
+    private Button btn9;
 
     @Nullable
     @Override
@@ -118,7 +124,33 @@ public class MainMe extends Fragment{
                 checkCameraPermission();
             }
         });
+        btn9 = (Button) view.findViewById(R.id.me_btn9);
+        btn9.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                checkWindowPermission();
+            }
+        });
 
+    }
+
+    @TargetApi(Build.VERSION_CODES.M)
+    public void checkWindowPermission(){
+//        int windowPermission = ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.SYSTEM_ALERT_WINDOW);
+//        if (windowPermission == PackageManager.PERMISSION_GRANTED){
+//            Intent intent = new Intent(getActivity(), WindowManagerActivity.class);
+//            startActivity(intent);
+//        }else {
+//            MainMe.this.requestPermissions(new String[]{Manifest.permission.SYSTEM_ALERT_WINDOW}, 2);
+//        }
+        if (! Settings.canDrawOverlays(getActivity())) {
+            Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
+                    Uri.parse("package:" + getActivity().getPackageName()));
+            startActivityForResult(intent,10);
+        }else {
+            Intent intent = new Intent(getActivity(), WindowManagerActivity.class);
+            startActivity(intent);
+        }
     }
 
     @TargetApi(Build.VERSION_CODES.M)
@@ -161,14 +193,28 @@ public class MainMe extends Fragment{
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == 1){
-            if (grantResults[0] == PackageManager.PERMISSION_GRANTED){
-                Intent intent = new Intent(getContext(), FaceTestActivity.class);
-                startActivity(intent);
-            }else {
-                if (!ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), Manifest.permission.CAMERA)){
-                    Toast.makeText(getActivity(), "相机权限被禁止", Toast.LENGTH_LONG).show();
+        switch (requestCode) {
+            case 1: {
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    Intent intent = new Intent(getContext(), FaceTestActivity.class);
+                    startActivity(intent);
+                } else {
+                    if (!ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), Manifest.permission.CAMERA)) {
+                        Toast.makeText(getActivity(), "相机权限被禁止", Toast.LENGTH_LONG).show();
+                    }
                 }
+                break;
+            }
+            default:
+                break;
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 10) {
+            if (Settings.canDrawOverlays(getActivity())) {
+
             }
         }
     }
