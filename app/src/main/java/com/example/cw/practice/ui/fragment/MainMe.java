@@ -29,6 +29,7 @@ import com.example.cw.practice.practice.danmaku.DanmakuActivity;
 import com.example.cw.practice.practice.faceTest.FaceTestActivity;
 import com.example.cw.practice.practice.notification.NotificationActivity;
 import com.example.cw.practice.practice.percentLayout.PercentRelativeLayoutActivity;
+import com.example.cw.practice.practice.remoteViews.RemoteViewActivity;
 import com.example.cw.practice.practice.snackbar.SnackbarActivity;
 import com.example.cw.practice.practice.statusBar.StatusBarActivity;
 import com.example.cw.practice.practice.windowManager.WindowManagerActivity;
@@ -49,6 +50,7 @@ public class MainMe extends Fragment{
     private Button btn7;
     private Button btn8;
     private Button btn9;
+    private Button btn10;
 
     @Nullable
     @Override
@@ -131,6 +133,15 @@ public class MainMe extends Fragment{
                 checkWindowPermission();
             }
         });
+        btn10 = (Button) view.findViewById(R.id.me_btn10);
+        btn10.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), RemoteViewActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
     }
 
