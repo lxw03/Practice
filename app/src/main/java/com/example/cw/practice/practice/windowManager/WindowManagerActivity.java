@@ -33,7 +33,7 @@ public class WindowManagerActivity extends AppCompatActivity {
     private void addOneButton() {
         mFloatingButton = new Button(this);
         mFloatingButton.setText("button");
-        mLayoutParams = new WindowManager.LayoutParams(100, 100, 0, 0, PixelFormat.TRANSPARENT);
+        mLayoutParams = new WindowManager.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, WindowManager.LayoutParams.WRAP_CONTENT, 0, 0, PixelFormat.TRANSPARENT);
         mLayoutParams.flags = WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL | WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE | WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED;
         mLayoutParams.gravity = Gravity.LEFT | Gravity.TOP;
         mLayoutParams.x = 100;
@@ -56,6 +56,12 @@ public class WindowManagerActivity extends AppCompatActivity {
                         mWindowManager.updateViewLayout(mFloatingButton, mLayoutParams);
                         break;
                     }
+                    case MotionEvent.ACTION_UP: {
+                        break;
+                    }
+                    case MotionEvent.ACTION_DOWN:{
+                        break;
+                    }
                     default:
                         break;
                 }
@@ -70,4 +76,7 @@ public class WindowManagerActivity extends AppCompatActivity {
     // 系统window   2000-2999
     //windowManager : addView, updateView, removeView
     //每一个window都对应着一个view和ViewRootImpl,window 通过view和viewRootImpl来建立联系，window并不是实际存在的，view才是window存在的实体
+    // window的三大操作全部交由WindowManagerGlobal来实现，这种工作模式是典型的桥接模式
+    //View是android中视图的呈现方式，但是View不能单独存在，它必须依附于Window这个抽象的概念上面
+    //DecorView是一个FrameLayout, 是Activity中的顶级 View，
 }

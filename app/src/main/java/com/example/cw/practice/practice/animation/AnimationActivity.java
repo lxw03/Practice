@@ -3,6 +3,7 @@ package com.example.cw.practice.practice.animation;
 import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -20,7 +21,7 @@ import com.example.cw.practice.R;
 
 public class AnimationActivity extends AppCompatActivity {
 
-    private Button mButton;
+    private Button mButton, buttonWidthAnimation;
     private TextView mTextView;
 
     @Override
@@ -28,6 +29,41 @@ public class AnimationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_animation);
         initView();
+        
+        initButtonWidthAnimation();
+    }
+
+    private void initButtonWidthAnimation() {
+
+        buttonWidthAnimation = (Button) findViewById(R.id.animation_btn2);
+        buttonWidthAnimation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ObjectAnimator.ofInt(buttonWidthAnimation, "width", 1500).setDuration(2000).start();
+            }
+        });
+    }
+
+
+    // 属性动画生效条件
+    //  1. set get方法来实现， Button控件setWidth源码当中并没有直接操作button的width，所以写一个包装类,间接提供set get方法（如果不满足，会crash）
+    //  2. 同时set get对属性做的改变必须能通过某种方法反映出来，比如会带来UI的变化（如果不满足，没动画效果，但不会crash）
+
+    private static class ViewWrapper{
+        private View viewTarget;
+
+        public ViewWrapper(View viewTarget) {
+            this.viewTarget = viewTarget;
+        }
+
+        public void setWidth(int width){
+            viewTarget.getLayoutParams().width = width;
+            viewTarget.requestLayout();
+        }
+
+        public int getWidth(){
+            return viewTarget.getLayoutParams().width;
+        }
     }
 
     private void initView() {
@@ -78,5 +114,6 @@ public class AnimationActivity extends AppCompatActivity {
 //                with(Animator anim) 将现有动画和传入的动画同时执行
             }
         });
+
     }
 }
