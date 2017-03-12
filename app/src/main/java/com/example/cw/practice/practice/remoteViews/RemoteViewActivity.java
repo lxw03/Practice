@@ -16,7 +16,7 @@ import android.widget.RemoteViews;
 
 import com.example.cw.practice.R;
 import com.example.cw.practice.practice.danmaku.DanmakuActivity;
-import com.example.cw.practice.practice.faceTest.FaceTestActivity;
+
 
 /**
  * Created by eengoo on 17/3/11.
@@ -33,10 +33,12 @@ public class RemoteViewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_remoteviews);
 
-        initViews();
+        initCustomNotification();
+
+        initCustomAppWidget();
     }
 
-    private void initViews() {
+    private void initCustomNotification() {
         remoteViewsNotification = (Button) findViewById(R.id.remoteViewsNotification);
         remoteViewsNotification.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,11 +57,27 @@ public class RemoteViewActivity extends AppCompatActivity {
 //                        .setContentText("这是内容")
                         .setWhen(System.currentTimeMillis())
 //                        .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.mipmap.ic_girl_selected))
-                        .setSmallIcon(R.mipmap.ic_girl_normal)//好像这个是必须的
+                        .setSmallIcon(R.mipmap.ic_girl_normal)  //感觉这个是必须的
                         .setCustomContentView(remoteViews)
                         .setContentIntent(pendingIntent)
                         .build();
                 mManager.notify(1, notification);
+                //如果notify第一个参数常量，后面的通知会替换前面的通知
+            }
+        });
+    }
+
+    //PendingIntent是在将来的某个不确定的时刻发生，intent是立马发生
+    //pendingIntent支持三种待定意图 PendingIntent.getActivity getService getBroadCast
+    //PendingIntent的匹配规则：如果两个PendingIntent 它们内部的Intent相同并且requestCode也相同，那么这两个PendingIntent就是相同的
+
+    //桌面小部件核心类AppWidgetProvider 本质上是BroadCastReceiver
+    private void initCustomAppWidget(){
+        remoteViewsWidget = (Button) findViewById(R.id.remoteViewsWidget);
+        remoteViewsWidget.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
             }
         });
     }
