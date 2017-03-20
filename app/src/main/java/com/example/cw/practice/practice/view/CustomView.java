@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.annotation.IntDef;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.ViewConfiguration;
 import android.view.ViewTreeObserver;
 
 /**
@@ -67,6 +68,11 @@ public class CustomView extends AppCompatActivity{
         int widthMeasureSpec_wrap_content = View.MeasureSpec.makeMeasureSpec( (1<<30) -1, View.MeasureSpec.AT_MOST);
         int heightMeasureSpec_wrap_content = View.MeasureSpec.makeMeasureSpec( (1<<30) -1, View.MeasureSpec.AT_MOST);
         view.measure(widthMeasureSpec_wrap_content,heightMeasureSpec_wrap_content);
+    }
+
+    private void test(){
+        //最小滑动距离
+        ViewConfiguration.get(getApplicationContext()).getScaledTouchSlop();
     }
 
 
