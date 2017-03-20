@@ -5,6 +5,7 @@ import android.support.annotation.IdRes;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -31,10 +32,13 @@ import static android.content.ContentValues.TAG;
 
 public class MainMeizi extends Fragment implements RadioGroup.OnCheckedChangeListener{
 
+    private static final String[] mTitles = {"PlayList","MusicPlayer","LocalFiles","Settings"};
+
     private ViewPager musicViewPager;
     private ArrayList<RadioButton> radioButtons = new ArrayList<>();
     private RadioButton radio_button_play_list,radio_button_music,radio_button_local_files,radio_button_settings;
     private RadioGroup radio_group;
+    private Toolbar toolbar;
 
     @Nullable
     @Override
@@ -63,8 +67,6 @@ public class MainMeizi extends Fragment implements RadioGroup.OnCheckedChangeLis
         fragments[2] = new LocalFilesFragment();
         fragments[3] = new SettingsFragment();
 
-        String[] mTitles = {"PlayList","MusicPlayer","LocalFiles","Settings"};
-
         MusicPagerAdapter adapter = new MusicPagerAdapter(getChildFragmentManager(), mTitles, fragments);
         musicViewPager = (ViewPager) view.findViewById(R.id.music_vp);
         musicViewPager.setAdapter(adapter);
@@ -84,6 +86,8 @@ public class MainMeizi extends Fragment implements RadioGroup.OnCheckedChangeLis
 
             }
         });
+
+        toolbar = (Toolbar) view.findViewById(R.id.music_toolbar);
 
     }
 
@@ -107,5 +111,6 @@ public class MainMeizi extends Fragment implements RadioGroup.OnCheckedChangeLis
                 break;
         }
         musicViewPager.setCurrentItem(index);
+        toolbar.setTitle(mTitles[index]);
     }
 }
