@@ -6,9 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioButton;
@@ -17,14 +15,11 @@ import android.widget.RadioGroup;
 import com.example.cw.practice.R;
 import com.example.cw.practice.music.adapter.MusicPagerAdapter;
 import com.example.cw.practice.music.ui.LocalFilesFragment;
-import com.example.cw.practice.music.ui.MusicPlayerFragment;
+import com.example.cw.practice.music.music.MusicPlayerFragment;
 import com.example.cw.practice.music.ui.PlayListFragment;
 import com.example.cw.practice.music.ui.SettingsFragment;
 
 import java.util.ArrayList;
-import java.util.List;
-
-import static android.content.ContentValues.TAG;
 
 /**
  * Created by chenwei on 17/2/6.

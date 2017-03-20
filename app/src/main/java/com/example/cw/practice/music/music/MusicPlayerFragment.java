@@ -1,4 +1,4 @@
-package com.example.cw.practice.music.ui;
+package com.example.cw.practice.music.music;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
