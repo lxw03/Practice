@@ -5,7 +5,7 @@ import android.graphics.PixelFormat;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Display;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
@@ -47,10 +47,13 @@ public class WindowManagerActivity extends AppCompatActivity {
         mFloatingButton.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                int rawX = (int) event.getRawX();
-                int rawY = (int) event.getRawY();
+                // TODO: 2017/3/20 没想清楚 rawX 和rawY为何会偏大
+                int rawX = (int) event.getRawX() -140;
+                int rawY = (int) event.getRawY() -150;
                 switch (event.getAction()){
                     case MotionEvent.ACTION_MOVE:{
+                        Log.d("111111", "onTouch: " + rawX);
+                        Log.d("111111", "onTouch: " + rawY);
                         mLayoutParams.x = rawX;
                         mLayoutParams.y = rawY;
                         mWindowManager.updateViewLayout(mFloatingButton, mLayoutParams);
