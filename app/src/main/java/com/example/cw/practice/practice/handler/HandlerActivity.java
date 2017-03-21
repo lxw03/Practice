@@ -1,8 +1,6 @@
 package com.example.cw.practice.practice.handler;
 
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -45,7 +43,6 @@ public class HandlerActivity extends AppCompatActivity {
             @Override
             public void run() {
                 Log.d(TAG, "run: " + mBooleanThreadLocal.get());
-
 //                Looper.prepare();
 //                Handler threadHandler = new Handler();
 //                Looper.loop();
