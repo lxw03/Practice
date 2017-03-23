@@ -139,7 +139,7 @@ public class MainMe extends Fragment{
             }
         });
         btn11 = (Button) view.findViewById(R.id.me_btn11);
-        btn1.setOnClickListener(new View.OnClickListener() {
+        btn11.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), SoundRecorderActivity.class);

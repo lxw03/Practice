@@ -21,6 +21,7 @@ public class SoundRecorderActivity extends AppCompatActivity {
 
     private ViewPager mViewPager;
     private List<Fragment> fragments = new ArrayList<>();
+    private List<String> titles = new ArrayList<>();
     private TabLayout mTabLayout;
 
     @Override
@@ -36,6 +37,8 @@ public class SoundRecorderActivity extends AppCompatActivity {
 
         fragments.add(new RecordingFragment());
         fragments.add(new RecordesFragment());
+        titles.add("Recording");
+        titles.add("Records");
         mViewPager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
             @Override
             public Fragment getItem(int position) {
@@ -45,6 +48,11 @@ public class SoundRecorderActivity extends AppCompatActivity {
             @Override
             public int getCount() {
                 return fragments.size();
+            }
+
+            @Override
+            public CharSequence getPageTitle(int position) {
+                return titles.get(position);
             }
         });
         mTabLayout.setupWithViewPager(mViewPager);
