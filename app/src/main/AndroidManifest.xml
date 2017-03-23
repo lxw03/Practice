@@ -41,6 +41,7 @@
         <activity android:name=".practice.faceTest.FaceTestActivity"/>
         <activity android:name=".practice.windowManager.WindowManagerActivity"/>
         <activity android:name=".practice.remoteViews.RemoteViewActivity"/>
+        <activity android:name=".practice.soundRecorder.SoundRecorderActivity"/>
     </application>
 
 </manifest>

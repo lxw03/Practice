@@ -2,7 +2,6 @@ package com.example.cw.practice.ui.fragment;
 
 import android.Manifest;
 import android.annotation.TargetApi;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -14,8 +13,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AlertDialog;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,10 +28,9 @@ import com.example.cw.practice.practice.notification.NotificationActivity;
 import com.example.cw.practice.practice.percentLayout.PercentRelativeLayoutActivity;
 import com.example.cw.practice.practice.remoteViews.RemoteViewActivity;
 import com.example.cw.practice.practice.snackbar.SnackbarActivity;
+import com.example.cw.practice.practice.soundRecorder.SoundRecorderActivity;
 import com.example.cw.practice.practice.statusBar.StatusBarActivity;
 import com.example.cw.practice.practice.windowManager.WindowManagerActivity;
-
-import static android.content.ContentValues.TAG;
 
 /**
  * Created by chenwei on 17/2/6.
@@ -51,6 +47,7 @@ public class MainMe extends Fragment{
     private Button btn8;
     private Button btn9;
     private Button btn10;
+    private Button btn11;
 
     @Nullable
     @Override
@@ -141,7 +138,14 @@ public class MainMe extends Fragment{
                 startActivity(intent);
             }
         });
-
+        btn11 = (Button) view.findViewById(R.id.me_btn11);
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), SoundRecorderActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 

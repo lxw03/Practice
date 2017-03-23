@@ -63,6 +63,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="RemoteViews Test"/>
+            <Button
+                android:id="@+id/me_btn11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sound_Recording"/>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
