@@ -142,8 +142,7 @@ public class MainMe extends Fragment{
         btn11.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), SoundRecorderActivity.class);
-                startActivity(intent);
+                checkWritePermission();
             }
         });
 
@@ -164,6 +163,18 @@ public class MainMe extends Fragment{
             startActivityForResult(intent,10);
         }else {
             Intent intent = new Intent(getActivity(), WindowManagerActivity.class);
+            startActivity(intent);
+        }
+    }
+
+    @TargetApi(Build.VERSION_CODES.M)
+    public void checkWritePermission(){
+        int writePermission = ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        if (writePermission == PackageManager.PERMISSION_GRANTED){
+            Intent intent = new Intent(getContext(), SoundRecorderActivity.class);
+            startActivity(intent);
+        }else {
+            Intent intent = new Intent(getContext(), SoundRecorderActivity.class);
             startActivity(intent);
         }
     }
