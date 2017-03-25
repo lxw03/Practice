@@ -90,7 +90,7 @@ public class DownloadActivity extends AppCompatActivity implements View.OnClickL
         switch (requestCode){
             case 1:
                 if (grantResults.length>0 && grantResults[0] != PackageManager.PERMISSION_GRANTED){
-                    Toast.makeText(this, "拒绝全线将无法使用程序", Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, "拒绝权限将无法使用程序", Toast.LENGTH_LONG).show();
                     finish();
                 }
                 break;
