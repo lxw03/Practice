@@ -68,6 +68,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Sound_Recording"/>
+            <Button
+                android:id="@+id/me_btn12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Download_Test"/>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

@@ -23,6 +23,7 @@ import com.example.cw.practice.R;
 import com.example.cw.practice.practice.animation.AnimationActivity;
 import com.example.cw.practice.practice.animation.TypeEvaluatorActivity;
 import com.example.cw.practice.practice.danmaku.DanmakuActivity;
+import com.example.cw.practice.practice.download.DownloadActivity;
 import com.example.cw.practice.practice.faceTest.FaceTestActivity;
 import com.example.cw.practice.practice.notification.NotificationActivity;
 import com.example.cw.practice.practice.percentLayout.PercentRelativeLayoutActivity;
@@ -48,6 +49,7 @@ public class MainMe extends Fragment{
     private Button btn9;
     private Button btn10;
     private Button btn11;
+    private Button btn12;
 
     @Nullable
     @Override
@@ -145,6 +147,15 @@ public class MainMe extends Fragment{
                 checkWritePermission();
             }
         });
+        btn12 = (Button) view.findViewById(R.id.me_btn12);
+        btn12.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), DownloadActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
     }
 

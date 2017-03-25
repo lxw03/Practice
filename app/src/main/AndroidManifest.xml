@@ -44,6 +44,8 @@
         <activity android:name=".practice.remoteViews.RemoteViewActivity"/>
         <activity android:name=".practice.soundRecorder.SoundRecorderActivity"/>
         <service android:name=".practice.soundRecorder.RecordingService"/>
+        <activity android:name=".practice.download.DownloadActivity"/>
+        <service android:name=".practice.download.DownloadService"/>
     </application>
 
 </manifest>
