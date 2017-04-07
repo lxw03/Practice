@@ -11,7 +11,6 @@ import android.graphics.SweepGradient;
 import android.os.Handler;
 import android.os.Message;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 
 import com.example.cw.practice.R;
@@ -140,7 +139,6 @@ public class RadarView extends View {
     private Handler handler = new Handler(){
         @Override
         public void handleMessage(Message msg) {
-            Log.d(TAG, "handleMessage: " + msg);
             super.handleMessage(msg);
             rotateAngel += 3;
             invalidate();

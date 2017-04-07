@@ -26,6 +26,8 @@ public class RadarActivity extends AppCompatActivity implements View.OnClickList
     private void initViews() {
         start = (Button) findViewById(R.id.radar_start_btn);
         pause = (Button) findViewById(R.id.radar_pause_btn);
+        start.setOnClickListener(this);
+        pause.setOnClickListener(this);
         mRadarView = (RadarView) findViewById(R.id.radar_view);
     }
 
