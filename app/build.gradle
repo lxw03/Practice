@@ -20,6 +20,10 @@ android {
     }
 }
 
+ext {
+    daggerVersion = '2.5'
+}
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
@@ -64,4 +68,8 @@ dependencies {
 
     //百分比布局
     compile 'com.android.support:percent:22.2.0'
+
+    //依赖注入
+    compile "com.google.dagger:dagger:${daggerVersion}"
+    annotationProcessor "com.google.dagger:dagger-compiler:${daggerVersion}"
 }

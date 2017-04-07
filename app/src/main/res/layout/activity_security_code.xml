@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+    >
+
+    <com.example.cw.practice.practice.SecurityCode.SecurityCodeView
+        android:id="@+id/security_code_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        >
+    </com.example.cw.practice.practice.SecurityCode.SecurityCodeView>
+
+    <TextView
+        android:id="@+id/security_code_textview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_weight="4"
+        android:text="输入验证码表示同意《用户协议》" />
+</LinearLayout>

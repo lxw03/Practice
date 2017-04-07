@@ -20,6 +20,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.cw.practice.R;
+import com.example.cw.practice.practice.SecurityCode.SecurityCodeActivity;
 import com.example.cw.practice.practice.animation.AnimationActivity;
 import com.example.cw.practice.practice.animation.TypeEvaluatorActivity;
 import com.example.cw.practice.practice.danmaku.DanmakuActivity;
@@ -50,6 +51,7 @@ public class MainMe extends Fragment{
     private Button btn10;
     private Button btn11;
     private Button btn12;
+    private Button btn13;
 
     @Nullable
     @Override
@@ -153,6 +155,14 @@ public class MainMe extends Fragment{
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), DownloadActivity.class);
+                startActivity(intent);
+            }
+        });
+        btn13 = (Button) view.findViewById(R.id.me_btn13);
+        btn13.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), SecurityCodeActivity.class);
                 startActivity(intent);
             }
         });

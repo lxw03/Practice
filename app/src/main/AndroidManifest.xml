@@ -48,6 +48,7 @@
                   android:launchMode="singleTask"
                   />
         <service android:name=".practice.download.DownloadService"/>
+        <activity android:name=".practice.SecurityCode.SecurityCodeActivity"/>
     </application>
 
 </manifest>

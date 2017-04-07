@@ -73,6 +73,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Download_Test"/>
+            <Button
+                android:id="@+id/me_btn13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Security_Code_Test"/>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
