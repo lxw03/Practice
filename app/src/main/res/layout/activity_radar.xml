@@ -26,4 +26,13 @@
         android:layout_below="@+id/radar_start_btn"
         />
 
+    <com.example.cw.practice.practice.shader.LinearGradientText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="爱奇艺爱奇艺爱奇艺爱奇艺"
+        android:layout_below="@+id/radar_view"
+        android:layout_alignParentStart="true"
+        android:textSize="20dp"
+        />
+
 </RelativeLayout>
