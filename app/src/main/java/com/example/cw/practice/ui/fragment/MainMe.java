@@ -29,6 +29,7 @@ import com.example.cw.practice.practice.faceTest.FaceTestActivity;
 import com.example.cw.practice.practice.notification.NotificationActivity;
 import com.example.cw.practice.practice.percentLayout.PercentRelativeLayoutActivity;
 import com.example.cw.practice.practice.remoteViews.RemoteViewActivity;
+import com.example.cw.practice.practice.shader.RadarActivity;
 import com.example.cw.practice.practice.snackbar.SnackbarActivity;
 import com.example.cw.practice.practice.soundRecorder.SoundRecorderActivity;
 import com.example.cw.practice.practice.statusBar.StatusBarActivity;
@@ -52,6 +53,7 @@ public class MainMe extends Fragment{
     private Button btn11;
     private Button btn12;
     private Button btn13;
+    private Button btn14;
 
     @Nullable
     @Override
@@ -166,7 +168,14 @@ public class MainMe extends Fragment{
                 startActivity(intent);
             }
         });
-
+        btn14 = (Button) view.findViewById(R.id.me_btn14);
+        btn14.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), RadarActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 

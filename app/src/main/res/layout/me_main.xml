@@ -78,6 +78,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Security_Code_Test"/>
+            <Button
+                android:id="@+id/me_btn14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="RadarView"/>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

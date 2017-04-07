@@ -49,6 +49,7 @@
                   />
         <service android:name=".practice.download.DownloadService"/>
         <activity android:name=".practice.SecurityCode.SecurityCodeActivity"/>
+        <activity android:name=".practice.shader.RadarActivity"/>
     </application>
 
 </manifest>
