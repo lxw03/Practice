@@ -11,6 +11,7 @@ import android.graphics.SweepGradient;
 import android.os.Handler;
 import android.os.Message;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 
 import com.example.cw.practice.R;
@@ -24,8 +25,10 @@ public class RadarView extends View {
     private static final int DEFAULT_HEIGHT = 200;
     private static final int DEFAULT_WIDTH = 200;
 
-    private static final int MSG_WHAT = 1;
+    private static final int MSG_WHAT = 10001;
     private static final int POST_DELAY = 20;
+
+    private static final String TAG = "RadarView";
 
     //雷达扫描开始 结束的颜色 背景色 线条色
     private int startColor = 0x0000ff00;
@@ -127,7 +130,7 @@ public class RadarView extends View {
         canvas.drawLine(-radarRadius, 0 , radarRadius, 0, mRadarPaint);
         canvas.drawLine(0, -radarRadius, 0, radarRadius, mRadarPaint);
 
-        canvas.rotate(rotateAngel);
+//        canvas.rotate(rotateAngel);
         mBgPaint.setShader(radarShader);
         canvas.concat(matrix);
         canvas.drawCircle(0,0,radarRadius, mBgPaint);
@@ -137,6 +140,7 @@ public class RadarView extends View {
     private Handler handler = new Handler(){
         @Override
         public void handleMessage(Message msg) {
+            Log.d(TAG, "handleMessage: " + msg);
             super.handleMessage(msg);
             rotateAngel += 3;
             invalidate();

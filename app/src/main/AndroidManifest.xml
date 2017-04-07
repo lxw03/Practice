@@ -17,7 +17,9 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Design.Light.NoActionBar">
+        android:theme="@style/Theme.Design.Light.NoActionBar"
+        android:hardwareAccelerated="false"
+        >
         <activity android:name=".MainActivity"
                     android:configChanges="keyboardHidden|orientation|screenSize"
             >
@@ -49,7 +51,9 @@
                   />
         <service android:name=".practice.download.DownloadService"/>
         <activity android:name=".practice.SecurityCode.SecurityCodeActivity"/>
-        <activity android:name=".practice.shader.RadarActivity"/>
+        <activity android:name=".practice.shader.RadarActivity"
+            android:hardwareAccelerated="true"
+            />
     </application>
 
 </manifest>
