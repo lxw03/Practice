@@ -1,6 +1,8 @@
 package com.example.cw.practice.practice.SecurityCode;
 
 import android.content.Context;
+import android.os.Handler;
+import android.os.Message;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
@@ -24,6 +26,8 @@ public class SecurityCodeView extends RelativeLayout{
     private int count = 4;
     private String inputContent;
     private InputCompleteListener inputCompleteListener;
+    private Handler mHandler;
+    private static final int CLEAR_TEXTVIEWS =1;
 
     public SecurityCodeView(Context context) {
         this(context, null);
@@ -45,6 +49,20 @@ public class SecurityCodeView extends RelativeLayout{
 
         editText.setCursorVisible(false);
         setListener();
+
+        mHandler = new Handler(){
+            @Override
+            public void handleMessage(Message msg) {
+                switch (msg.what){
+                    case CLEAR_TEXTVIEWS:{
+                        clearTextViews();
+                        break;
+                    }
+                    default:
+                        break;
+                }
+            }
+        };
     }
 
     private void setListener() {
@@ -72,8 +90,10 @@ public class SecurityCodeView extends RelativeLayout{
                         inputContent = stringBuffer.toString();
                         if (stringBuffer.length() == 4){
                             if (inputCompleteListener != null){
-                                clearTextViews();
                                 inputCompleteListener.inputComplete();
+                                Message message = new Message();
+                                message.what = CLEAR_TEXTVIEWS;
+                                mHandler.sendMessageDelayed(message,1000);
                             }
                         }
                     }
