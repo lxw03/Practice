@@ -159,6 +159,15 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        int currentTab = commonTabLayout.getCurrentTab();
+        if (currentTab==0){
+            super.onBackPressed();
+        }else {
+            changeFragment(0);
+        }
+    }
 
     // android:configChanges="keyboardHidden|orientation|screenSize"
     // 设置了后，屏幕旋转等操作不会触发Activity重新创建，onSaveInstanceState不会被执行,取而代之的是onConfigurationChanged会被调用，可以在这个方法里做一些处理
