@@ -166,6 +166,7 @@ public class MainActivity extends AppCompatActivity {
             super.onBackPressed();
         }else {
             changeFragment(0);
+            commonTabLayout.setCurrentTab(0);
         }
     }
 
