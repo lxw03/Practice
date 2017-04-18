@@ -54,6 +54,7 @@
         <activity android:name=".practice.shader.RadarActivity"
             android:hardwareAccelerated="true"
             />
+        <activity android:name=".practice.autoWarppedTextView.AutoWrappedTextActivity"/>
     </application>
 
 </manifest>

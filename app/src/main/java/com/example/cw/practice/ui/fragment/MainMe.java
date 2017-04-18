@@ -23,6 +23,7 @@ import com.example.cw.practice.R;
 import com.example.cw.practice.practice.SecurityCode.SecurityCodeActivity;
 import com.example.cw.practice.practice.animation.AnimationActivity;
 import com.example.cw.practice.practice.animation.TypeEvaluatorActivity;
+import com.example.cw.practice.practice.autoWarppedTextView.AutoWrappedTextActivity;
 import com.example.cw.practice.practice.danmaku.DanmakuActivity;
 import com.example.cw.practice.practice.download.DownloadActivity;
 import com.example.cw.practice.practice.faceTest.FaceTestActivity;
@@ -54,6 +55,7 @@ public class MainMe extends Fragment{
     private Button btn12;
     private Button btn13;
     private Button btn14;
+    private Button btn15;
 
     @Nullable
     @Override
@@ -176,6 +178,15 @@ public class MainMe extends Fragment{
                 startActivity(intent);
             }
         });
+        btn15 = (Button) view.findViewById(R.id.me_btn15);
+        btn15.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), AutoWrappedTextActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
     }
 
