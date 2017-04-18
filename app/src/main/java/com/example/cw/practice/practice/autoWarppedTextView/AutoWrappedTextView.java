@@ -10,6 +10,7 @@ import android.support.annotation.Nullable;
 import android.text.TextPaint;
 import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 
 import com.example.cw.practice.R;
@@ -36,6 +37,8 @@ public class AutoWrappedTextView extends View {
     private char[] mTextCharArray;
     private List<String> mTextList;
     private Rect[] mSplitTextRect;
+
+    private static final String TAG = "AUTOWRAPPEDTEXTVIEW";
 
     public AutoWrappedTextView(Context context) {
         super(context);
@@ -161,11 +164,13 @@ public class AutoWrappedTextView extends View {
     }
 
     private int getTopTextMarginTop() {
+        Log.d(TAG, "getTopTextMarginTop: " + mSplitTextRect[0].height());
         return mSplitTextRect[0].height() / 2 + mPaddingTop + getFontSpace();
     }
 
     private int getFontSpace() {
         Paint.FontMetricsInt fontMetrics = mTextPaint.getFontMetricsInt();
+        Log.d(TAG, "getFontSpace: " + fontMetrics.toString());
         return (fontMetrics.descent- fontMetrics.ascent) / 2 - fontMetrics.descent;
     }
 
