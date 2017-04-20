@@ -72,4 +72,7 @@ dependencies {
     //依赖注入
     compile "com.google.dagger:dagger:${daggerVersion}"
     annotationProcessor "com.google.dagger:dagger-compiler:${daggerVersion}"
+
+    //RN
+    compile "com.facebook.react:react-native:+"
 }

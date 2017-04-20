@@ -27,6 +27,7 @@ import com.example.cw.practice.practice.autoWarppedTextView.AutoWrappedTextActiv
 import com.example.cw.practice.practice.danmaku.DanmakuActivity;
 import com.example.cw.practice.practice.download.DownloadActivity;
 import com.example.cw.practice.practice.faceTest.FaceTestActivity;
+import com.example.cw.practice.practice.gotoRNPages.GoToRNPages;
 import com.example.cw.practice.practice.notification.NotificationActivity;
 import com.example.cw.practice.practice.percentLayout.PercentRelativeLayoutActivity;
 import com.example.cw.practice.practice.remoteViews.RemoteViewActivity;
@@ -56,6 +57,7 @@ public class MainMe extends Fragment{
     private Button btn13;
     private Button btn14;
     private Button btn15;
+    private Button btn16;
 
     @Nullable
     @Override
@@ -183,6 +185,14 @@ public class MainMe extends Fragment{
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), AutoWrappedTextActivity.class);
+                startActivity(intent);
+            }
+        });
+        btn16 = (Button) view.findViewById(R.id.me_btn16);
+        btn16.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), GoToRNPages.class);
                 startActivity(intent);
             }
         });

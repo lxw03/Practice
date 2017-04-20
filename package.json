@@ -1,0 +1,27 @@
+{
+  "name": "Practice",
+  "version": "1.0.0",
+  "description": "none",
+  "main": "index.js",
+  "scripts": {
+    "test": "none",
+    "start": "node node_modules/react-native/local-cli/cli.js start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tanpuer/Practice.git"
+  },
+  "keywords": [
+    "none"
+  ],
+  "author": "chenwei",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tanpuer/Practice/issues"
+  },
+  "homepage": "https://github.com/tanpuer/Practice#readme",
+  "dependencies": {
+    "react": "^16.0.0-alpha.6",
+    "react-native": "^0.43.3"
+  }
+}

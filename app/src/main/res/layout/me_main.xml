@@ -88,6 +88,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="AutoWrappedText"/>
+            <Button
+                android:id="@+id/me_btn16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="RN Pages Test"/>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
