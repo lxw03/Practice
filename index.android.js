@@ -15,6 +15,18 @@ class Practice extends React.Component {
     )
   }
 }
+
+class Fragment extends React.Component {
+    render(){
+        return(
+            <View style={styles.container}>
+                    <Text style={styles.hello}>This is RN Fragment</Text>
+              </View>
+        );
+    }
+}
+
+
 var styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -28,3 +40,4 @@ var styles = StyleSheet.create({
 });
 
 AppRegistry.registerComponent('Practice', () => Practice);
+AppRegistry.registerComponent('Fragment', () => Fragment);
