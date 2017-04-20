@@ -33,7 +33,8 @@ public abstract class BaseReactFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         //todo ?
-        super.onCreate(savedInstanceState);
+//        super.onCreate(savedInstanceState);
+        super.onCreateView(inflater, container, savedInstanceState);
         return mReactRootView;
     }
 
