@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.cw.practice.R;
+import com.example.cw.practice.rn.MyMixedActivity;
 import com.example.cw.practice.rn.MyReactActivity;
 
 /**
@@ -34,7 +35,13 @@ public class GoToRNPages extends AppCompatActivity implements View.OnClickListen
             case R.id.go_to_rn_activity_btn:{
                 Intent intent = new Intent(GoToRNPages.this, MyReactActivity.class);
                 startActivity(intent);
+                break;
                 //react-native bundle --platform android --dev false --entry-file index.android.js --bundle-output app/src/main/assets/index.android.bundle --assets-dest app/src/main/res/
+            }
+            case R.id.go_to_rn_fragment_btn:{
+                Intent intent = new Intent(GoToRNPages.this, MyMixedActivity.class);
+                startActivity(intent);
+                break;
             }
             default:
                 break;

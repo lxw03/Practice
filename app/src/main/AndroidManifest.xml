@@ -64,6 +64,7 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         </activity>
         <activity android:name=".practice.gotoRNPages.GoToRNPages"/>
+        <activity android:name=".rn.MyMixedActivity"/>
     </application>
 
 </manifest>
