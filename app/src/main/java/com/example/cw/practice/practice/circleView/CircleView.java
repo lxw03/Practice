@@ -33,7 +33,7 @@ public class CircleView extends View {
     private boolean autoAnimation = false;
     private boolean staticPlay = false;
     private float size;
-    private static final int DEFAULT_SIZE = 100;
+    private static final int DEFAULT_SIZE = 50;
     private float mPaddingVertical;
     private static final float DEFAULT_PADDING_VERTICAL = 0;
     private static final float STROKE_WIDTH = 4;
@@ -175,6 +175,8 @@ public class CircleView extends View {
         }
     }
 
+    //考虑了padding为什么会感觉view上几个点一闪一闪
+    //// TODO: 2017/4/24  
     private void setTrianglePath(){
         if (mCircleRectF != null){
             float dimen = ((mCircleRectF).width())/4;
