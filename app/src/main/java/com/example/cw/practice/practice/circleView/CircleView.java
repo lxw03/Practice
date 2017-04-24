@@ -33,7 +33,7 @@ public class CircleView extends View {
     private boolean autoAnimation = false;
     private boolean staticPlay = false;
     private float size;
-    private static final int DEFAULT_SIZE = 50;
+    private static final int DEFAULT_SIZE = 100;
     private float mPaddingVertical;
     private static final float DEFAULT_PADDING_VERTICAL = 0;
     private static final float STROKE_WIDTH = 4;
@@ -179,9 +179,9 @@ public class CircleView extends View {
         if (mCircleRectF != null){
             float dimen = ((mCircleRectF).width())/4;
             float mRadius = dimen *2;
-            mTiranglePath.moveTo(mRadius - dimen/2 , mRadius - (float) (dimen*Math.sqrt(3)/2) );
-            mTiranglePath.lineTo(mRadius + dimen  , mRadius);
-            mTiranglePath.lineTo(mRadius - dimen/2 , mRadius + (float) (dimen*Math.sqrt(3)/2) );
+            mTiranglePath.moveTo(mRadius - dimen/2 + getPaddingLeft(), mRadius - (float) (dimen*Math.sqrt(3)/2) + getPaddingTop());
+            mTiranglePath.lineTo(mRadius + dimen  + getPaddingLeft(), mRadius + getPaddingTop());
+            mTiranglePath.lineTo(mRadius - dimen/2 + getPaddingLeft(), mRadius + (float) (dimen*Math.sqrt(3)/2) + getPaddingTop());
         }
     }
 
