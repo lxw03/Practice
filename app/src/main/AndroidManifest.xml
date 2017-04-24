@@ -65,6 +65,7 @@
         </activity>
         <activity android:name=".practice.gotoRNPages.GoToRNPages"/>
         <activity android:name=".rn.MyMixedActivity"/>
+        <activity android:name=".practice.circleView.QYViewsPractice"/>
     </application>
 
 </manifest>

@@ -24,6 +24,7 @@ import com.example.cw.practice.practice.SecurityCode.SecurityCodeActivity;
 import com.example.cw.practice.practice.animation.AnimationActivity;
 import com.example.cw.practice.practice.animation.TypeEvaluatorActivity;
 import com.example.cw.practice.practice.autoWarppedTextView.AutoWrappedTextActivity;
+import com.example.cw.practice.practice.circleView.QYViewsPractice;
 import com.example.cw.practice.practice.danmaku.DanmakuActivity;
 import com.example.cw.practice.practice.download.DownloadActivity;
 import com.example.cw.practice.practice.faceTest.FaceTestActivity;
@@ -58,6 +59,7 @@ public class MainMe extends Fragment{
     private Button btn14;
     private Button btn15;
     private Button btn16;
+    private Button btn17;
 
     @Nullable
     @Override
@@ -193,6 +195,14 @@ public class MainMe extends Fragment{
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), GoToRNPages.class);
+                startActivity(intent);
+            }
+        });
+        btn17 = (Button) view.findViewById(R.id.me_btn17);
+        btn17.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), QYViewsPractice.class);
                 startActivity(intent);
             }
         });

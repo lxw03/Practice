@@ -93,6 +93,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="RN Pages Test"/>
+            <Button
+                android:id="@+id/me_btn17"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="QY Views Test"/>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

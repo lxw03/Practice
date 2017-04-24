@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="QYCircleView">
+        <attr name="rtc_auto_animation" format="boolean"/>
+        <attr name="rtc_static_play" format="boolean"/>
+        <attr name="rtc_size" format="dimension"/>
+        <attr name="rtc_padding_vertical" format="dimension"/>
+        <attr name="rtc_color_triangle" format="color"/>
+        <attr name="rtc_color_circle" format="color"/>
+    </declare-styleable>
+</resources>
