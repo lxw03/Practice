@@ -24,7 +24,7 @@ import com.example.cw.practice.practice.SecurityCode.SecurityCodeActivity;
 import com.example.cw.practice.practice.animation.AnimationActivity;
 import com.example.cw.practice.practice.animation.TypeEvaluatorActivity;
 import com.example.cw.practice.practice.autoWarppedTextView.AutoWrappedTextActivity;
-import com.example.cw.practice.practice.circleView.QYViewsPractice;
+import com.example.cw.practice.practice.QYViews.QYViewsPractice;
 import com.example.cw.practice.practice.danmaku.DanmakuActivity;
 import com.example.cw.practice.practice.download.DownloadActivity;
 import com.example.cw.practice.practice.faceTest.FaceTestActivity;

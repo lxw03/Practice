@@ -1,4 +1,4 @@
-package com.example.cw.practice.practice.circleView;
+package com.example.cw.practice.practice.QYViews;
 
 import android.animation.ValueAnimator;
 import android.content.Context;
@@ -20,7 +20,7 @@ import com.example.cw.practice.R;
  * Created by cw on 2017/4/24.
  */
 
-public class CircleView extends View {
+public class QYCircleView extends View {
 
     private Paint mCirclePaint;
     private RectF mCircleRectF;
@@ -46,15 +46,15 @@ public class CircleView extends View {
     private static final String TAG = "CIRCLE_VIEW";
 
 
-    public CircleView(Context context) {
+    public QYCircleView(Context context) {
         this(context, null);
     }
 
-    public CircleView(Context context, @Nullable AttributeSet attrs) {
+    public QYCircleView(Context context, @Nullable AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public CircleView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public QYCircleView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         initView(context,attrs);
     }
@@ -176,7 +176,7 @@ public class CircleView extends View {
     }
 
     //考虑了padding为什么会感觉view上几个点一闪一闪
-    //// TODO: 2017/4/24  
+    //// TODO: 2017/4/24
     private void setTrianglePath(){
         if (mCircleRectF != null){
             float dimen = ((mCircleRectF).width())/4;
