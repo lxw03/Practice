@@ -20,4 +20,9 @@
         android:padding="5dp"
         />
 
+    <com.example.cw.practice.practice.QYViews.ClockView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+
 </LinearLayout>
