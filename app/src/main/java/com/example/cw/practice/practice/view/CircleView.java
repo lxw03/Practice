@@ -49,7 +49,7 @@ public class CircleView extends View {
 
         //获取自定义属性
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.QYCircleView);
-        mColor = a.getColor(R.styleable.QYCircleView_circle_color, color);
+        mColor = a.getColor(R.styleable.CircleView_circle_color, color);
         a.recycle();
 
         initViews();

@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void initFragments(Bundle savedInstanceState) {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        int currentTabPosition = 0;
+        int currentTabPosition = 3;
         if (savedInstanceState != null){
             mainMeFragment = (MainMe) getSupportFragmentManager().findFragmentByTag("mainMeFragment");
             mainNewsFragment = (MainNews) getSupportFragmentManager().findFragmentByTag("mainNewsFragment");
