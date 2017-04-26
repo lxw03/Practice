@@ -13,6 +13,7 @@ import android.util.AttributeSet;
 import android.view.View;
 
 import com.example.cw.practice.R;
+import com.example.cw.practice.util.PixelUtil;
 
 /**
  * Created by cw on 2017/4/25.
@@ -77,11 +78,11 @@ public class ClockView extends View{
         if (attrs != null){
             TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.ClockView);
             mHourPointerColor = a.getColor(R.styleable.ClockView_hourPointerColor, DEFAULT_POINTER_COLOR);
-            mHourPointerWidth = a.getColor(R.styleable.ClockView_hourPointerWidth, DEFAULT_POINTER_WIDTH);
+            mHourPointerWidth = a.getDimensionPixelSize(R.styleable.ClockView_hourPointerWidth, PixelUtil.dip2px(DEFAULT_POINTER_WIDTH));
             mMinutePointerColor = a.getColor(R.styleable.ClockView_minutePointerColor, DEFAULT_POINTER_COLOR);
-            mMinutePointerWidth = a.getColor(R.styleable.ClockView_minutePointerWidth, DEFAULT_POINTER_WIDTH);
+            mMinutePointerWidth = a.getDimensionPixelSize(R.styleable.ClockView_minutePointerWidth, PixelUtil.dip2px(DEFAULT_POINTER_WIDTH));
             mSecondPointerColor = a.getColor(R.styleable.ClockView_secondPointerColor, DEFAULT_POINTER_COLOR);
-            mSecondPointerWidth = a.getColor(R.styleable.ClockView_secondPointerWidth, DEFAULT_POINTER_WIDTH);
+            mSecondPointerWidth = a.getDimensionPixelSize(R.styleable.ClockView_secondPointerWidth, PixelUtil.dip2px(DEFAULT_POINTER_WIDTH));
         }
         initPaints();
         initRectF();

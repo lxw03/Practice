@@ -4,8 +4,8 @@
         <attr name="minutePointerColor" format="color"/>
         <attr name="hourPointerColor" format="color"/>
         <attr name="secondPointerColor" format="color"/>
-        <attr name="minutePointerWidth" format="integer"/>
-        <attr name="hourPointerWidth" format="integer"/>
-        <attr name="secondPointerWidth" format="integer"/>
+        <attr name="minutePointerWidth" format="dimension"/>
+        <attr name="hourPointerWidth" format="dimension"/>
+        <attr name="secondPointerWidth" format="dimension"/>
     </declare-styleable>
 </resources>
