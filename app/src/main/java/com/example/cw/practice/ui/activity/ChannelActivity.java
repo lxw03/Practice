@@ -186,8 +186,8 @@ public class ChannelActivity extends AppCompatActivity implements AllTabsAdapter
         } else if (i % 4 == 0) {
             endView = choseTabs_recyclerView.getChildAt(i - 4);
             endView.getLocationInWindow(endLoc);
-            toX = endLoc[0] - parentLoc[0] - PixelUtil.dip2px(this, 10);
-            toY = endLoc[1] + view.getHeight() - parentLoc[1] + PixelUtil.dip2px(this, 10);
+            toX = endLoc[0] - parentLoc[0] - PixelUtil.dip2px(10);
+            toY = endLoc[1] + view.getHeight() - parentLoc[1] + PixelUtil.dip2px(10);
         } else {
             endView = choseTabs_recyclerView.getChildAt(i - 1);
             endView.getLocationInWindow(endLoc);
@@ -201,7 +201,7 @@ public class ChannelActivity extends AppCompatActivity implements AllTabsAdapter
         Path mPath = new Path();
         mPath.moveTo(startX, startY);
         // TODO: 2017/2/7  10dp好像有问题
-        mPath.lineTo(toX + PixelUtil.dip2px(this, 10), toY);
+        mPath.lineTo(toX + PixelUtil.dip2px(10), toY);
         mPathMeasure = new PathMeasure(mPath, false);
 
         ValueAnimator animator = ValueAnimator.ofFloat(0, mPathMeasure.getLength());

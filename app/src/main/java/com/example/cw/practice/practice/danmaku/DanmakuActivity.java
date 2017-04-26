@@ -145,7 +145,7 @@ public class DanmakuActivity extends AppCompatActivity {
         BaseDanmaku danmaku = danmakuContext.mDanmakuFactory.createDanmaku(BaseDanmaku.TYPE_SCROLL_RL);
         danmaku.text = content;
         danmaku.padding = 5;
-        danmaku.textSize = PixelUtil.dip2px(this,20);
+        danmaku.textSize = PixelUtil.dip2px(20);
         danmaku.textColor = Color.WHITE;
         danmaku.setTime(danmakuView.getCurrentTime());
         if (withBorder){

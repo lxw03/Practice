@@ -1,6 +1,6 @@
 package com.example.cw.practice.util;
 
-import android.content.Context;
+import android.content.res.Resources;
 
 /**
  * Created by cw on 2017/2/7.
@@ -8,9 +8,9 @@ import android.content.Context;
 
 public class PixelUtil {
 
-    public static int dip2px(Context context, float dpValue) {
+    public static int dip2px(float dpValue) {
 
-        final float scale = context.getResources().getDisplayMetrics().density;
+        final float scale = Resources.getSystem().getDisplayMetrics().density;
 
         return (int) (dpValue * scale +0.5f);
 
