@@ -25,4 +25,18 @@
         android:layout_height="200dp"
         />
 
+    <com.example.cw.practice.practice.QYViews.TabLayoutColorText
+        android:id="@+id/tablayout_title"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:padding="10dp"
+        android:text="hello"
+        />
+
+    <android.support.v7.widget.AppCompatSeekBar
+        android:id="@+id/tablayout_seekbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
 </LinearLayout>

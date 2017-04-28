@@ -59,7 +59,8 @@ public class MainNews extends Fragment{
             mTabLayout.addTab(mTabLayout.newTab().setText(mTabs.get(i)));
 
             //you should call it immediately after constructing the fragment
-            NewsFragment newsFragment = new NewsFragment();
+            Fragment newsFragment = Fragment.instantiate(getActivity(),NewsFragment.class.getName());
+//            NewsFragment newsFragment = new NewsFragment();
             Bundle bundle = new Bundle();
             bundle.putString("name", mTabs.get(i));
             newsFragment.setArguments(bundle);
@@ -110,7 +111,8 @@ public class MainNews extends Fragment{
             mFragments.clear();
             fragments.clear();
             for (int i=0; i<mTabs.size(); i++){
-                NewsFragment newsFragment = new NewsFragment();
+//                NewsFragment newsFragment = new NewsFragment();
+                Fragment newsFragment = Fragment.instantiate(getActivity(), NewsFragment.class.getName());
                 Bundle bundle = new Bundle();
                 bundle.putString("name", mTabs.get(i));
                 newsFragment.setArguments(bundle);
