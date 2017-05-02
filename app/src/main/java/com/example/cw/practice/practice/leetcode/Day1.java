@@ -1,7 +1,9 @@
 package com.example.cw.practice.practice.leetcode;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Created by cw on 2017/4/21.
@@ -130,6 +132,19 @@ public class Day1 {
             intArray[charArray[i]]++;
         }
         return intArray;
+    }
+
+
+//    7.Giving a String, find the longest substring without repeating characters
+    private int getLongestSubString(String a){
+        Set<Character> set = new HashSet<Character>();
+        for (int i=0;i<a.length();i++){
+            char c = a.charAt(i);
+            if (!set.contains(c)){
+                set.add(c);
+            }
+        }
+        return set.size();
     }
 
 }

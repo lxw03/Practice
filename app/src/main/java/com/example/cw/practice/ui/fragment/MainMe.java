@@ -36,6 +36,7 @@ import com.example.cw.practice.practice.shader.RadarActivity;
 import com.example.cw.practice.practice.snackbar.SnackbarActivity;
 import com.example.cw.practice.practice.soundRecorder.SoundRecorderActivity;
 import com.example.cw.practice.practice.statusBar.StatusBarActivity;
+import com.example.cw.practice.practice.textureView.TextureViewPractice;
 import com.example.cw.practice.practice.windowManager.WindowManagerActivity;
 
 /**
@@ -60,6 +61,7 @@ public class MainMe extends Fragment{
     private Button btn15;
     private Button btn16;
     private Button btn17;
+    private Button btn18;
 
     @Nullable
     @Override
@@ -132,7 +134,7 @@ public class MainMe extends Fragment{
         btn8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                checkCameraPermission();
+                checkCameraPermission(FaceTestActivity.class);
             }
         });
         btn9 = (Button) view.findViewById(R.id.me_btn9);
@@ -206,6 +208,13 @@ public class MainMe extends Fragment{
                 startActivity(intent);
             }
         });
+        btn18 = (Button) view.findViewById(R.id.me_btn18);
+        btn18.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                checkCameraPermission(TextureViewPractice.class);
+            }
+        });
 
 
     }
@@ -230,7 +239,7 @@ public class MainMe extends Fragment{
     }
 
     @TargetApi(Build.VERSION_CODES.M)
-    public void checkCameraPermission(){
+    public void checkCameraPermission(Class clz){
 //        if (ContextCompat.checkSelfPermission(getActivity(), android.Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED){
 //            if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), android.Manifest.permission.CAMERA)){
 //                new AlertDialog.Builder(getActivity())
@@ -253,7 +262,7 @@ public class MainMe extends Fragment{
         int cameraPermission = ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.CAMERA);
         if (cameraPermission == PackageManager.PERMISSION_GRANTED){
 //            Toast.makeText(getActivity(), "已经有这个权限", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(getContext(), FaceTestActivity.class);
+            Intent intent = new Intent(getContext(), clz);
             startActivity(intent);
         }else {
             Toast.makeText(getActivity(), "还没有这个权限", Toast.LENGTH_SHORT).show();
