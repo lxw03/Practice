@@ -10,6 +10,8 @@ import android.util.Log;
 import android.view.TextureView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewStub;
+import android.view.animation.LinearInterpolator;
 import android.widget.Button;
 
 import com.example.cw.practice.R;
@@ -27,6 +29,8 @@ public class TextureViewPractice extends AppCompatActivity implements TextureVie
     private Camera mCamera;
     private Button mButton;
     private ValueAnimator mValueAnimator;
+    private ViewStub mViewStub;
+    private TextureView smallTextureView;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -40,7 +44,53 @@ public class TextureViewPractice extends AppCompatActivity implements TextureVie
     }
 
     private void initAnimation() {
+        mValueAnimator = ValueAnimator.ofFloat(0,1);
+        mValueAnimator.setDuration(1000);
+        mValueAnimator.setInterpolator(new LinearInterpolator());
+        mValueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                float value = (float) animation.getAnimatedValue();
+            }
+        });
+    }
 
+    private void lazyLoadView(){
+        mViewStub = (ViewStub) findViewById(R.id.texture_viewstub);
+        View view = mViewStub.inflate();
+        smallTextureView = (TextureView) view.findViewById(R.id.view_stub_texture);
+        smallTextureView.setSurfaceTextureListener(new TextureView.SurfaceTextureListener() {
+            @Override
+            public void onSurfaceTextureAvailable(SurfaceTexture surface, int width, int height) {
+                mTextureView.setVisibility(View.INVISIBLE);
+                if (mCamera != null){
+                    mCamera = Camera.open();
+                }
+                try {
+                    mCamera.setPreviewTexture(surface);
+                    mCamera.startPreview();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onSurfaceTextureSizeChanged(SurfaceTexture surface, int width, int height) {
+
+            }
+
+            @Override
+            public boolean onSurfaceTextureDestroyed(SurfaceTexture surface) {
+                mCamera.startPreview();
+                mCamera.release();
+                return true;
+            }
+
+            @Override
+            public void onSurfaceTextureUpdated(SurfaceTexture surface) {
+
+            }
+        });
     }
 
     @Override
@@ -78,7 +128,7 @@ public class TextureViewPractice extends AppCompatActivity implements TextureVie
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.texture_btn: {
-
+                lazyLoadView();
                 break;
             }
             default:
