@@ -81,5 +81,5 @@ dependencies {
 
     //import arr
     compile project(':router')
-    compile project(':AndroidJSCore-library')
+//    compile project(':AndroidJSCore-library')
 }

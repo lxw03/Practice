@@ -67,6 +67,12 @@
         <activity android:name=".rn.MyMixedActivity"/>
         <activity android:name=".practice.QYViews.QYViewsPractice"/>
         <activity android:name=".practice.textureView.TextureViewPractice"/>
+        <activity android:name="com.example.cw.iqiyi.activity.QYMainActivity">
+
+        </activity>
+        <activity android:name="com.example.cw.iqiyi.activity.WelcomeActivity">
+
+        </activity>
     </application>
 
 </manifest>
