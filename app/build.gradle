@@ -32,13 +32,41 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:design:25.0.1'
-    compile 'com.android.support:appcompat-v7:25.1.0'
-    testCompile 'junit:junit:4.12'
-    compile 'com.jakewharton:butterknife:8.5.1'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
 
     //retrofit和rxjava
+
+    //菜单栏
+    //分包
+    //json解析封装框架
+    //图片缩放
+    //打印日志
+    //显示图片框架
+
+    //iRecyclerView
+//    compile 'com.github.Aspsine:IRecyclerView:0.0.5'
+
+    //动画库
+
+    //事件总线
+
+//    compile 'com.marshalchen.ultimaterecyclerview:library:0.7.0'
+
+    //字幕
+
+    //百分比布局
+
+    //依赖注入
+    compile "com.google.dagger:dagger:${daggerVersion}"
+    annotationProcessor "com.google.dagger:dagger-compiler:${daggerVersion}"
+
+    //RN
+
+    //import arr
+    compile project(':router')
+    //    compile project(':AndroidJSCore-library')
+    compile 'com.android.support:design:25.0.1'
+    compile 'com.android.support:appcompat-v7:25.1.0'
+    compile 'com.jakewharton:butterknife:8.5.1'
     compile 'com.squareup.retrofit2:retrofit:2.0.0-beta3'
     compile 'com.squareup.okhttp3:logging-interceptor:3.1.2'
     compile 'io.reactivex:rxjava:1.0.1'
@@ -46,40 +74,18 @@ dependencies {
     compile 'com.squareup.retrofit2:converter-gson:2.0.0-beta4'
     compile 'com.squareup.retrofit2:adapter-rxjava:2.0.0-beta4'
     compile 'com.squareup.okhttp3:okhttp:3.4.1'
-
-    compile 'com.flyco.tablayout:FlycoTabLayout_Lib:2.0.8@aar'//菜单栏
-    compile 'com.android.support:multidex:1.0.0'//分包
-    compile 'com.alibaba:fastjson:1.2.8'//json解析封装框架
-    compile 'com.commit451:PhotoView:1.2.4'//图片缩放
-    compile 'com.orhanobut:logger:1.13'//打印日志
-    compile 'com.github.bumptech.glide:glide:3.6.1'//显示图片框架
-
-    //iRecyclerView
-//    compile 'com.github.Aspsine:IRecyclerView:0.0.5'
-
-    //动画库
+    compile 'com.flyco.tablayout:FlycoTabLayout_Lib:2.0.8@aar'
+    compile 'com.android.support:multidex:1.0.0'
+    compile 'com.alibaba:fastjson:1.2.8'
+    compile 'com.commit451:PhotoView:1.2.4'
+    compile 'com.orhanobut:logger:1.13'
+    compile 'com.github.bumptech.glide:glide:3.6.1'
     compile 'com.airbnb.android:lottie:1.0.1'
-
-    //事件总线
     compile 'org.greenrobot:eventbus:3.0.0'
-
-//    compile 'com.marshalchen.ultimaterecyclerview:library:0.7.0'
-
-    //字幕
     compile 'com.github.ctiao:DanmakuFlameMaster:0.6.4'
     compile 'com.github.ctiao:ndkbitmap-armv7a:0.6.4'
-
-    //百分比布局
     compile 'com.android.support:percent:22.2.0'
-
-    //依赖注入
-    compile "com.google.dagger:dagger:${daggerVersion}"
-    annotationProcessor "com.google.dagger:dagger-compiler:${daggerVersion}"
-
-    //RN
-    compile "com.facebook.react:react-native:+"
-
-    //import arr
-    compile project(':router')
-//    compile project(':AndroidJSCore-library')
+    compile 'com.facebook.react:react-native:+'
+    testCompile 'junit:junit:4.12'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
 }
