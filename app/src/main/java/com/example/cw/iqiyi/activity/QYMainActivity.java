@@ -12,7 +12,7 @@ import com.example.cw.iqiyi.mvp.QYContract;
 import com.example.cw.iqiyi.presenter.QYMainPresenter;
 import com.example.cw.practice.R;
 
-public class QYMainActivity extends BaseActivity implements QYContract.IView{
+public class QYMainActivity extends BaseActivity implements QYContract.IView, View.OnClickListener{
 
     private View mLoadingView;
     private View mExceptionView;
@@ -45,6 +45,7 @@ public class QYMainActivity extends BaseActivity implements QYContract.IView{
         mViewPagerAdapter = new QYMainViewPagerAdapter(getSupportFragmentManager());
         mViewPager.setAdapter(mViewPagerAdapter);
         mTabLayout.setupWithViewPager(mViewPager,false);
+        mExceptionView.setOnClickListener(this);
     }
 
     @Override
@@ -65,5 +66,19 @@ public class QYMainActivity extends BaseActivity implements QYContract.IView{
     @Override
     public boolean isFinished() {
         return this.isFinishing();
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.qymain_load_data_exception:{
+                showExceptionTips(false);
+                showOrHideLoadingView(true);
+                mPresenter.retryLoad();
+                break;
+            }
+            default:
+                break;
+        }
     }
 }

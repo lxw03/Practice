@@ -75,8 +75,15 @@ public class QYMainPresenter implements QYContract.IPresenter {
                     @Override
                     public void call(Throwable throwable) {
                         Log.d(TAG, "call: " + throwable);
+                        view.showOrHideLoadingView(false);
+                        view.showExceptionTips(true);
                     }
                 });
 //
+    }
+
+    @Override
+    public void retryLoad() {
+        initTabs();
     }
 }

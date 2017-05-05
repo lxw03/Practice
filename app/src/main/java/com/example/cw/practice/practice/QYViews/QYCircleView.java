@@ -8,6 +8,7 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.RectF;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
@@ -206,5 +207,17 @@ public class QYCircleView extends View {
     public static int dip2px(float dipValue) {
         final float scale = Resources.getSystem().getDisplayMetrics().density;
         return (int) (dipValue * scale + 0.5f);
+    }
+
+    @Override
+    protected void onVisibilityChanged(@NonNull View changedView, @Nullable int visibility) {
+        super.onVisibilityChanged(changedView, visibility);
+        if (autoAnimation){
+            if (visibility == GONE || visibility == INVISIBLE){
+                reset();
+            }else {
+                initAnimations();
+            }
+        }
     }
 }

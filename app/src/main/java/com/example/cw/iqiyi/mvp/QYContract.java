@@ -22,5 +22,7 @@ public interface QYContract {
     interface IPresenter extends IBasePresenter{
 
         void initTabs();
+
+        void retryLoad();
     }
 }
