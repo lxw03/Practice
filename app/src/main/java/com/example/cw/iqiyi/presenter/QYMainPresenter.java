@@ -66,7 +66,10 @@ public class QYMainPresenter implements QYContract.IPresenter {
                 .subscribe(new Action1<MovieSubjects>() {
                     @Override
                     public void call(MovieSubjects movieSubjects) {
-                        Log.d(TAG, "call: " + movieSubjects.toString());
+                        int size = movieSubjects.getNewslist().size();
+                        for (int i=0;i<size;i++){
+                            Log.d(TAG, "call: " + movieSubjects.getNewslist().get(i).getTitle());
+                        }
                     }
                 }, new Action1<Throwable>() {
                     @Override

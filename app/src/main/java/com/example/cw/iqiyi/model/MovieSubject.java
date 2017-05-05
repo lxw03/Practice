@@ -31,4 +31,23 @@ public class MovieSubject{
     @SerializedName("url")
     private String url;
 
+    public String getCtime() {
+        return ctime;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getPicUrl() {
+        return picUrl;
+    }
+
+    public String getUrl() {
+        return url;
+    }
 }

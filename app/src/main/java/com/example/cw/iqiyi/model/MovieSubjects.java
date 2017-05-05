@@ -22,5 +22,15 @@ public class MovieSubjects{
     @SerializedName("newslist")
     private List<MovieSubject> newslist;
 
+    public String getCode() {
+        return code;
+    }
 
+    public String getMsg() {
+        return msg;
+    }
+
+    public List<MovieSubject> getNewslist() {
+        return newslist;
+    }
 }

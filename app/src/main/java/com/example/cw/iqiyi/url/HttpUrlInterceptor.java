@@ -12,6 +12,7 @@ import okhttp3.Response;
  * Created by cw on 2017/5/5.
  */
 
+// okhttp3拦截器 打印请求url地址
 public class HttpUrlInterceptor implements Interceptor {
 
     private static final String TAG = "HttpUrlInterceptor";
