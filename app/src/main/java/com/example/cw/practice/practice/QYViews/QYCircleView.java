@@ -22,24 +22,26 @@ import com.example.cw.practice.R;
 
 public class QYCircleView extends View {
 
+    private static final int DEFAULT_COLOR = 0xff0bbe06;
+    private static final float DEFAULT_PADDING_VERTICAL = 0;
+    private static final float STROKE_WIDTH = 4;
+    private static final long ANIMATION_DURATION = 2000;
+    private static final int DEFAULT_SIZE = 50;
+    private static final int DEFAULT_PADDING = 4;
+
     private Paint mCirclePaint;
     private RectF mCircleRectF;
     private Paint mTrianglePaint;
-    private Path mTiranglePath;
+    private Path mTrianglePath;
 
     private int mTriangleColor;
     private int mCircleColor;
-    private static final int DEFAULT_COLOR = 0xff0bbe06;
     private boolean autoAnimation = false;
     private boolean staticPlay = false;
     private float size;
-    private static final int DEFAULT_SIZE = 50;
     private float mPaddingVertical;
-    private static final float DEFAULT_PADDING_VERTICAL = 0;
-    private static final float STROKE_WIDTH = 4;
 
     private ValueAnimator mValueAnimator;
-    private static final long ANIMATION_DURATION = 2000;
     private int mAngle = 0;
 
     private int lastHeight = -1;
@@ -75,7 +77,7 @@ public class QYCircleView extends View {
         mCircleRectF = new RectF();
         //mCircleRectF.set是必须的
         mCircleRectF.set(0,0, size,size);
-        mTiranglePath = new Path();
+        mTrianglePath = new Path();
     }
 
     private void initPaints() {
@@ -129,6 +131,9 @@ public class QYCircleView extends View {
     //onMeasure  和  onDraw时处理下
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        if (getPaddingLeft() == 0 || getPaddingRight()==0 || getPaddingTop() ==0 || getPaddingBottom() ==0){
+            setPadding(DEFAULT_PADDING, DEFAULT_PADDING,DEFAULT_PADDING,DEFAULT_PADDING);
+        }
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         int widthSize = MeasureSpec.getSize(widthMeasureSpec);
         int widthMode = MeasureSpec.getMode(widthMeasureSpec);
@@ -167,10 +172,10 @@ public class QYCircleView extends View {
             if (mAngle<270){
                 canvas.save();
                 canvas.rotate(mAngle, mCircleRectF.centerX(), mCircleRectF.centerY());
-                canvas.drawPath(mTiranglePath, mTrianglePaint);
+                canvas.drawPath(mTrianglePath, mTrianglePaint);
                 canvas.restore();
             }else {
-                canvas.drawPath(mTiranglePath, mTrianglePaint);
+                canvas.drawPath(mTrianglePath, mTrianglePaint);
             }
         }
     }
@@ -181,9 +186,10 @@ public class QYCircleView extends View {
         if (mCircleRectF != null){
             float dimen = ((mCircleRectF).width())/4;
             float mRadius = dimen *2;
-            mTiranglePath.moveTo(mRadius - dimen/2 + getPaddingLeft(), mRadius - (float) (dimen*Math.sqrt(3)/2) + getPaddingTop());
-            mTiranglePath.lineTo(mRadius + dimen  + getPaddingLeft(), mRadius + getPaddingTop());
-            mTiranglePath.lineTo(mRadius - dimen/2 + getPaddingLeft(), mRadius + (float) (dimen*Math.sqrt(3)/2) + getPaddingTop());
+            mTrianglePath.moveTo(mRadius - dimen/2 + getPaddingLeft(), mRadius - (float) (dimen*Math.sqrt(3)/2) + getPaddingTop());
+            mTrianglePath.lineTo(mRadius + dimen  + getPaddingLeft(), mRadius + getPaddingTop());
+            mTrianglePath.lineTo(mRadius - dimen/2 + getPaddingLeft(), mRadius + (float) (dimen*Math.sqrt(3)/2) + getPaddingTop());
+            mTrianglePath.close();
         }
     }
 
