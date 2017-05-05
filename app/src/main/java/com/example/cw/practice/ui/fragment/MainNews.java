@@ -68,7 +68,7 @@ public class MainNews extends Fragment{
             fragments.put(mTabs.get(i),newsFragment);
 
         }
-        mTabLayout.setupWithViewPager(mViewPager, true);
+        mTabLayout.setupWithViewPager(mViewPager, false);
         mViewPager.setAdapter(new FragmentStatePagerAdapter(getActivity().getSupportFragmentManager()) {
             @Override
             public Fragment getItem(int position) {

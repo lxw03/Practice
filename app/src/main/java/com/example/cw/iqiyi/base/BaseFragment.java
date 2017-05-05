@@ -1,6 +1,7 @@
 package com.example.cw.iqiyi.base;
 
-import android.app.Fragment;
+
+import android.support.v4.app.Fragment;
 
 /**
  * Created by cw on 2017/5/3.

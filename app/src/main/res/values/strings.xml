@@ -39,4 +39,6 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="qymainview_is_loading">正在加载...</string>
+    <string name="qymainview_data_exception">加载内容错误...请重试</string>
 </resources>
