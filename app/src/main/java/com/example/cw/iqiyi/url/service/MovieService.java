@@ -5,6 +5,7 @@ import com.example.cw.iqiyi.model.MovieSubjects;
 
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Headers;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
 import rx.Observable;
@@ -15,6 +16,7 @@ import rx.Observable;
 
 public interface MovieService {
 
+    @Headers("Cache-Control: public, max-age=")
     @GET("social")
     Observable<MovieSubjects> getSocial(@Query("key") String key, @Query("num") int num);
 

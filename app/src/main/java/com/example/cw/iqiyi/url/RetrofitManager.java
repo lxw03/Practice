@@ -13,6 +13,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitManager {
 
+    private static final long CACHE_SIZE = 10*1024*1024;
     private Retrofit mRetrofit;
 
     private RetrofitManager() {
@@ -28,6 +29,23 @@ public class RetrofitManager {
                 .showUrlLog(true)
                 .build();
         builder.addInterceptor(httpUrlInterceptor);
+
+//        //设置http的缓存 
+        //// TODO: 2017/5/5  crash
+//        File httpCacheDirectory = new File(MyApplication.getInstance().getCacheDir(), "response");
+//        Cache cache = null;
+//        try{
+//            cache = new Cache(httpCacheDirectory, CACHE_SIZE);
+//        }catch (Exception e){
+//            Log.d(TAG, "Can not set Http Cache: " + e);
+//        }
+//        builder.cache(cache);
+
+        //设置http CacheControl
+        // TODO: 2017/5/5 没用。。。
+//        HttpCacheInterceptor httpCacheInterceptor = new HttpCacheInterceptor.Build()
+//                .build();
+//        builder.addInterceptor(httpCacheInterceptor);
 
         mRetrofit = new Retrofit.Builder()
                 .client(builder.build())
