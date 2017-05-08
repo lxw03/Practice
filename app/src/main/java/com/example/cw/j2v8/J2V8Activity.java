@@ -34,5 +34,15 @@ public class J2V8Activity extends AppCompatActivity {
         v8Object1.release();
         v8Object2.release();
         v8Array.release();
+
+        V8 runtime = V8.createV8Runtime();
+        runtime.executeVoidScript(""
+                + "var person = {};\n"
+                + "var hockeyTeam = {name : 'WolfPack'};\n"
+                + "person.first = 'Ian';\n"
+                + "person['last'] = 'Bull';\n"
+                + "person.hockeyTeam = hockeyTeam;\n");
+        // TODO: Access the person object
+        runtime.release();
     }
 }

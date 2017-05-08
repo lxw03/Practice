@@ -103,6 +103,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="TextureView Practice"/>
+            <Button
+                android:id="@+id/me_btn19"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="RxJava Practice"/>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

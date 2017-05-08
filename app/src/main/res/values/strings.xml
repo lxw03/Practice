@@ -41,4 +41,6 @@
     <string name="title_notifications">Notifications</string>
     <string name="qymainview_is_loading">正在加载...</string>
     <string name="qymainview_data_exception">加载内容错误...请重试</string>
+    <string name="rx_observable_edittext_hint">请输入内容</string>
+    <string name="rx_observer_textview_hint">等待输入的内容</string>
 </resources>

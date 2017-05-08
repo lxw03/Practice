@@ -76,6 +76,7 @@
             android:label="@string/title_activity_qymain">
         </activity>
         <activity android:name="com.example.cw.j2v8.J2V8Activity"/>
+        <activity android:name=".practice.rxJava.RxJavaPractice"/>
     </application>
 
 </manifest>

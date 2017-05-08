@@ -32,6 +32,7 @@ import com.example.cw.practice.practice.gotoRNPages.GoToRNPages;
 import com.example.cw.practice.practice.notification.NotificationActivity;
 import com.example.cw.practice.practice.percentLayout.PercentRelativeLayoutActivity;
 import com.example.cw.practice.practice.remoteViews.RemoteViewActivity;
+import com.example.cw.practice.practice.rxJava.RxJavaPractice;
 import com.example.cw.practice.practice.shader.RadarActivity;
 import com.example.cw.practice.practice.snackbar.SnackbarActivity;
 import com.example.cw.practice.practice.soundRecorder.SoundRecorderActivity;
@@ -62,6 +63,7 @@ public class MainMe extends Fragment{
     private Button btn16;
     private Button btn17;
     private Button btn18;
+    private Button btn19;
 
     @Nullable
     @Override
@@ -215,8 +217,8 @@ public class MainMe extends Fragment{
                 checkCameraPermission(TextureViewPractice.class);
             }
         });
-
-
+        btn19 = (Button) view.findViewById(R.id.me_btn19);
+        btn19.setOnClickListener(v -> startActivity(new Intent(getActivity(), RxJavaPractice.class)));
     }
 
     @TargetApi(Build.VERSION_CODES.M)
