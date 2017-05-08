@@ -91,4 +91,7 @@ dependencies {
     compile 'com.facebook.react:react-native:+'
     testCompile 'junit:junit:4.12'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
+
+    // j2v8
+    compile 'com.eclipsesource.j2v8:j2v8_android:3.0.5'
 }

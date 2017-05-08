@@ -27,7 +27,7 @@ public class QYCircleView extends View {
     private static final float DEFAULT_PADDING_VERTICAL = 0;
     private static final float STROKE_WIDTH = 4;
     private static final long ANIMATION_DURATION = 2000;
-    private static final int DEFAULT_SIZE = 50;
+    private static final int DEFAULT_SIZE = 40;
     private static final int DEFAULT_PADDING = 4;
 
     private Paint mCirclePaint;
