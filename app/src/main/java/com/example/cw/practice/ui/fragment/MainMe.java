@@ -195,20 +195,14 @@ public class MainMe extends Fragment{
             }
         });
         btn16 = (Button) view.findViewById(R.id.me_btn16);
-        btn16.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), GoToRNPages.class);
-                startActivity(intent);
-            }
+        btn16.setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), GoToRNPages.class);
+            startActivity(intent);
         });
         btn17 = (Button) view.findViewById(R.id.me_btn17);
-        btn17.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), QYViewsPractice.class);
-                startActivity(intent);
-            }
+        btn17.setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), QYViewsPractice.class);
+            startActivity(intent);
         });
         btn18 = (Button) view.findViewById(R.id.me_btn18);
         btn18.setOnClickListener(new View.OnClickListener() {

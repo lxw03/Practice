@@ -1,17 +1,21 @@
 package com.example.cw.iqiyi.presenter;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
 import com.example.cw.iqiyi.model.MovieSubjects;
 import com.example.cw.iqiyi.mvp.QYContract;
 import com.example.cw.iqiyi.url.ApiConfig;
-import com.example.cw.iqiyi.url.loader.MovieLoader;
+import com.example.cw.iqiyi.url.RetrofitManager;
+import com.example.cw.iqiyi.url.service.MovieService;
 
 import java.lang.ref.WeakReference;
 
-import rx.functions.Action1;
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.annotations.NonNull;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
 
 /**
@@ -21,15 +25,15 @@ import rx.functions.Action1;
 public class QYMainPresenter implements QYContract.IPresenter {
 
     private static final String TAG = "QYMainPresenter";
+    protected MovieService mMovieService;
     private WeakReference<QYContract.IView> mViews;
-    private MovieLoader mMovieLoader;
     public QYMainPresenter(QYContract.IView view) {
         mViews = new WeakReference<>(view);
     }
 
     @Override
     public void onCreate(Bundle args) {
-        mMovieLoader = new MovieLoader();
+        mMovieService = RetrofitManager.getInstance().create(MovieService.class);
     }
 
     @Override
@@ -62,24 +66,30 @@ public class QYMainPresenter implements QYContract.IPresenter {
         final QYContract.IView view = mViews.get();
         view.showOrHideLoadingView(true);
         //请求数据
-        mMovieLoader.getMovie(ApiConfig.BASE_KEY, 10)
-                .subscribe(new Action1<MovieSubjects>() {
+        mMovieService.getSocial(ApiConfig.BASE_KEY, 10)
+                .observeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<MovieSubjects>() {
                     @Override
-                    public void call(MovieSubjects movieSubjects) {
-                        int size = movieSubjects.getNewslist().size();
-                        for (int i=0;i<size;i++){
-                            Log.d(TAG, "call: " + movieSubjects.getNewslist().get(i).getTitle());
-                        }
+                    public void onSubscribe(@NonNull Disposable d) {
+
                     }
-                }, new Action1<Throwable>() {
+
                     @Override
-                    public void call(Throwable throwable) {
-                        Log.d(TAG, "call: " + throwable);
-                        view.showOrHideLoadingView(false);
-                        view.showExceptionTips(true);
+                    public void onNext(@NonNull MovieSubjects movieSubjects) {
+
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
                     }
                 });
-//
     }
 
     @Override

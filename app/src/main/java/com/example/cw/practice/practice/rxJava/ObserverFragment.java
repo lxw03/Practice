@@ -4,11 +4,19 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.AppCompatTextView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.cw.practice.R;
+
+import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.annotations.NonNull;
+
+
 
 /**
  * Created by cw on 2017/5/8.
@@ -17,6 +25,7 @@ import com.example.cw.practice.R;
 public class ObserverFragment extends Fragment {
 
     private AppCompatTextView mAppCompatTextView;
+    private static final String TAG = "ObserverFragment";
 
     @Override
     public void onStart() {
@@ -33,5 +42,22 @@ public class ObserverFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_rx_observer, container, false);
         mAppCompatTextView = (AppCompatTextView) view.findViewById(R.id.rx_observer_tv);
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
+
+    private void test() {
+        Observable.create(new ObservableOnSubscribe<Integer>() {
+            @Override
+            public void subscribe(@NonNull ObservableEmitter<Integer> e) throws Exception {
+                e.onNext(1);
+                e.onNext(2);
+                e.onNext(3);
+            }
+        }).map(integer -> integer.toString()).subscribe(s -> Log.d(TAG, s));
+
     }
 }
