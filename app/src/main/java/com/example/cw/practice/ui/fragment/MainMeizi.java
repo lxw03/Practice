@@ -27,7 +27,7 @@ import java.util.ArrayList;
 
 public class MainMeizi extends Fragment implements RadioGroup.OnCheckedChangeListener{
 
-    private static final String[] mTitles = {"PlayList","MusicPlayer","LocalFiles","Settings"};
+    private static final String[] mTitles = {"go to J2V8 Pages","MusicPlayer","LocalFiles","Settings"};
 
     private ViewPager musicViewPager;
     private ArrayList<RadioButton> radioButtons = new ArrayList<>();
@@ -57,8 +57,8 @@ public class MainMeizi extends Fragment implements RadioGroup.OnCheckedChangeLis
         radio_group.setOnCheckedChangeListener(this);
 
         Fragment[] fragments = new Fragment[4];
-        fragments[0] = new PlayListFragment();
-        fragments[1] = new MusicPlayerFragment();
+        fragments[1] = new PlayListFragment();
+        fragments[0] = new MusicPlayerFragment();
         fragments[2] = new LocalFilesFragment();
         fragments[3] = new SettingsFragment();
 

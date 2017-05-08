@@ -93,5 +93,6 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
 
     // j2v8
-    compile 'com.eclipsesource.j2v8:j2v8_android:3.0.5'
+    // https://mvnrepository.com/artifact/com.eclipsesource.j2v8/j2v8
+    compile 'com.eclipsesource.j2v8:j2v8:4.5.0@aar'
 }
