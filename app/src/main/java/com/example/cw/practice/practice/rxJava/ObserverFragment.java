@@ -58,6 +58,5 @@ public class ObserverFragment extends Fragment {
                 e.onNext(3);
             }
         }).map(integer -> integer.toString()).subscribe(s -> Log.d(TAG, s));
-
     }
 }
