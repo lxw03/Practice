@@ -108,6 +108,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="RxJava Practice"/>
+            <Button
+                android:id="@+id/me_btn20"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bazier Practice"/>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

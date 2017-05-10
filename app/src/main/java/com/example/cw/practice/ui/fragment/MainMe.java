@@ -25,6 +25,7 @@ import com.example.cw.practice.practice.animation.AnimationActivity;
 import com.example.cw.practice.practice.animation.TypeEvaluatorActivity;
 import com.example.cw.practice.practice.autoWarppedTextView.AutoWrappedTextActivity;
 import com.example.cw.practice.practice.QYViews.QYViewsPractice;
+import com.example.cw.practice.practice.bazier.BazierActivity;
 import com.example.cw.practice.practice.danmaku.DanmakuActivity;
 import com.example.cw.practice.practice.download.DownloadActivity;
 import com.example.cw.practice.practice.faceTest.FaceTestActivity;
@@ -64,6 +65,7 @@ public class MainMe extends Fragment{
     private Button btn17;
     private Button btn18;
     private Button btn19;
+    private Button btn20;
 
     @Nullable
     @Override
@@ -213,6 +215,8 @@ public class MainMe extends Fragment{
         });
         btn19 = (Button) view.findViewById(R.id.me_btn19);
         btn19.setOnClickListener(v -> startActivity(new Intent(getActivity(), RxJavaPractice.class)));
+        btn20 = (Button) view.findViewById(R.id.me_btn20);
+        btn20.setOnClickListener(v -> startActivity(new Intent(getActivity(), BazierActivity.class)));
     }
 
     @TargetApi(Build.VERSION_CODES.M)
