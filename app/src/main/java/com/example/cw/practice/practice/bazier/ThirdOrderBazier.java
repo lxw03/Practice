@@ -24,9 +24,7 @@ public class ThirdOrderBazier extends View {
     private float mAuxiliaryY;
     private float mAuxiliaryXX;
     private float mAuxiliaryYY;
-    private int mLeftAuxiliaryId =0;
-    private int mRightAuxiliaryId =1;
-    private boolean isSecondPointer = true;
+    private boolean isSecondPointer = false;
 
     private Paint mBazierPaint;
     private float mStartX;
@@ -108,12 +106,12 @@ public class ThirdOrderBazier extends View {
                 isSecondPointer = true;
                 break;
             }
-            case MotionEvent.ACTION_MOVE: {
+            case MotionEvent.ACTION_MOVE:{
                 mAuxiliaryX = event.getX(0);
                 mAuxiliaryY = event.getY(0);
-                if (isSecondPointer && event.getPointerCount()>1){
-                    mAuxiliaryYY = event.getY(1);
+                if (isSecondPointer){
                     mAuxiliaryXX = event.getX(1);
+                    mAuxiliaryYY = event.getY(1);
                 }
                 invalidate();
                 break;
