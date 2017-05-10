@@ -1,15 +1,15 @@
 package com.example.cw.practice;
 
 import android.app.Activity;
-import android.app.Application;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.multidex.MultiDexApplication;
 
 /**
  * Created by chenwei on 17/2/8.
  */
 
-public class MyApplication extends Application {
+public class MyApplication extends MultiDexApplication{
 
     private static MyApplication instance;
 

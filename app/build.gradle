@@ -12,6 +12,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -94,4 +95,6 @@ dependencies {
     // j2v8
     // https://mvnrepository.com/artifact/com.eclipsesource.j2v8/j2v8
     compile 'com.eclipsesource.j2v8:j2v8:4.5.0@aar'
+
+    compile 'com.github.LiquidPlayer:LiquidCore:0.2.2'
 }
