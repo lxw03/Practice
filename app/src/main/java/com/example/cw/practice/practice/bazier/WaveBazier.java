@@ -25,6 +25,7 @@ public class WaveBazier extends View implements View.OnClickListener{
     private int waveCount = 4;
     private int mCenterY;
     private ValueAnimator mValueAnimator;
+    private int mYOffset;
 
     public WaveBazier(Context context) {
         this(context, null);
@@ -51,6 +52,7 @@ public class WaveBazier extends View implements View.OnClickListener{
         screenHeight = h;
         mCenterY = screenHeight/2;
         waveLength = screenWidth/waveCount;
+        mYOffset = waveLength/4;
         initAnimation();
         mValueAnimator.start();
     }
@@ -61,8 +63,8 @@ public class WaveBazier extends View implements View.OnClickListener{
         mPath.reset();
         mPath.moveTo(-waveLength+offset, mCenterY);
         for (int i=0; i<waveCount+1; i++){
-            mPath.quadTo(-waveLength*3/4 + waveLength*i + offset, mCenterY + 60, -waveLength/2 + waveLength*i + offset, mCenterY);
-            mPath.quadTo(-waveLength/4 + waveLength*i + offset, mCenterY -60, waveLength*i + offset, mCenterY);
+            mPath.quadTo(-waveLength*3/4 + waveLength*i + offset, mCenterY + mYOffset, -waveLength/2 + waveLength*i + offset, mCenterY);
+            mPath.quadTo(-waveLength/4 + waveLength*i + offset, mCenterY -mYOffset, waveLength*i + offset, mCenterY);
         }
         mPath.lineTo(screenWidth, screenHeight);
         mPath.lineTo(0,screenHeight);
