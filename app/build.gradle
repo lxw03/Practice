@@ -97,4 +97,5 @@ dependencies {
     compile 'com.eclipsesource.j2v8:j2v8:4.5.0@aar'
 
     compile 'com.github.LiquidPlayer:LiquidCore:0.2.2'
+    compile group: 'com.eclipsesource.j2v8', name: 'j2v8', version: '4.6.0'
 }
