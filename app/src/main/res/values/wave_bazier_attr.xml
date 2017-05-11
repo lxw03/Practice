@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="WaveBazier">
+        <attr name="line_width" format="integer"/>
+        <attr name="line_color" format="integer"/>
+        <attr name="wave_count" format="integer"/>
+    </declare-styleable>
+</resources>

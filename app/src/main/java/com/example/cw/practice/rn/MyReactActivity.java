@@ -1,6 +1,7 @@
 package com.example.cw.practice.rn;
 
 import com.facebook.react.ReactActivity;
+import com.facebook.react.ReactActivityDelegate;
 
 import javax.annotation.Nullable;
 
@@ -17,5 +18,10 @@ public class MyReactActivity extends ReactActivity{
     @Override
     protected String getMainComponentName() {
         return "Practice";
+    }
+
+    @Override
+    protected ReactActivityDelegate createReactActivityDelegate() {
+        return super.createReactActivityDelegate();
     }
 }

@@ -2,7 +2,9 @@ package com.example.cw.practice.practice.bazier;
 
 import android.animation.ValueAnimator;
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.support.annotation.Nullable;
@@ -10,22 +12,29 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
 
+import com.example.cw.practice.R;
+
 /**
  * Created by cw on 2017/5/11.
  */
 
 public class WaveBazier extends View implements View.OnClickListener{
 
+    private static final int LINE_WIDTH = 5;
+    private static final int LINE_COLOR = Color.BLACK;
+    private static final int WAVE_COUNT = 4;
     private Paint mPaint;
     private Path mPath;
     private int waveLength;
     private int offset;
     private int screenWidth;
     private int screenHeight;
-    private int waveCount = 4;
+    private int waveCount;
     private int mCenterY;
     private ValueAnimator mValueAnimator;
     private int mYOffset;
+    private int lineWidth;
+    private int lineColor;
 
     public WaveBazier(Context context) {
         this(context, null);
@@ -37,11 +46,18 @@ public class WaveBazier extends View implements View.OnClickListener{
 
     public WaveBazier(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        if (attrs != null){
+            TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.WaveBazier);
+            lineWidth = a.getInt(R.styleable.WaveBazier_line_width, LINE_WIDTH);
+            lineColor = a.getColor(R.styleable.WaveBazier_line_color, LINE_COLOR);
+            waveCount = a.getInt(R.styleable.WaveBazier_wave_count, WAVE_COUNT);
+        }
 
         mPaint = new Paint();
         mPaint.setAntiAlias(true);
         mPaint.setStyle(Paint.Style.STROKE);
-        mPaint.setStrokeWidth(5);
+        mPaint.setStrokeWidth(lineWidth);
+        mPaint.setColor(lineColor);
         mPath = new Path();
     }
 
@@ -52,7 +68,7 @@ public class WaveBazier extends View implements View.OnClickListener{
         screenHeight = h;
         mCenterY = screenHeight/2;
         waveLength = screenWidth/waveCount;
-        mYOffset = waveLength/4;
+        mYOffset = 50;
         initAnimation();
         mValueAnimator.start();
     }
