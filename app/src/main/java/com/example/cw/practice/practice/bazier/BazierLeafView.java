@@ -33,6 +33,7 @@ public class BazierLeafView extends View{
     private int height;
     private PointF bazierPoint;
     private float bazierT;
+    private final Bitmap mBitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.ic_girl_normal);
 
     public BazierLeafView(Context context) {
         this(context, null);
@@ -90,7 +91,7 @@ public class BazierLeafView extends View{
         }
 //        canvas.save();
 //        canvas.rotate(rotateAngle);
-        Bitmap bitmap = BitmapUtil.rotateBitmap(BitmapFactory.decodeResource(getResources(), R.mipmap.ic_girl_normal), rotateAngle);
+        Bitmap bitmap = BitmapUtil.rotateBitmap(mBitmap, rotateAngle);
         canvas.drawBitmap(bitmap, bazierPoint.x, bazierPoint.y, mPaint);
 //        canvas.restore();
     }
@@ -107,7 +108,7 @@ public class BazierLeafView extends View{
         });
         rotateAnimation.start();
     }
-
+    
     @Override
     protected void onVisibilityChanged(@NonNull View changedView, int visibility) {
         super.onVisibilityChanged(changedView, visibility);
