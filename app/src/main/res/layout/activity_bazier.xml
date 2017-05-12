@@ -15,7 +15,10 @@
     <!--<com.example.cw.practice.practice.bazier.DrawPadBazier-->
         <!--android:layout_width="match_parent"-->
         <!--android:layout_height="match_parent"/>-->
-    <com.example.cw.practice.practice.bazier.WaveBazier
+    <!--<com.example.cw.practice.practice.bazier.WaveBazier-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"/>-->
+    <com.example.cw.practice.practice.bazier.BazierLeafView
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 </LinearLayout>
