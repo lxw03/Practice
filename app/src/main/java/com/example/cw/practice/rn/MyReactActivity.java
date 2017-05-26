@@ -1,5 +1,8 @@
 package com.example.cw.practice.rn;
 
+import android.os.Bundle;
+import android.util.Log;
+
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;
 
@@ -13,6 +16,7 @@ public class MyReactActivity extends ReactActivity{
 
     //react-native bundle --platform android --dev false --entry-file index.android.js --bundle-output app/src/main/assets/index.android.bundle --assets-dest app/src/main/res/
 
+    private static final String TAG = "GoToReactActivity";
 
     @Nullable
     @Override
@@ -23,5 +27,11 @@ public class MyReactActivity extends ReactActivity{
     @Override
     protected ReactActivityDelegate createReactActivityDelegate() {
         return super.createReactActivityDelegate();
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Log.d(TAG, "onCreate: " + System.currentTimeMillis());
     }
 }
