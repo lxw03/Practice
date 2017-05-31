@@ -72,6 +72,7 @@
                   android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             >
         </activity>
+        <activity android:name=".rn.MyNativeActivity"/>
         <activity android:name=".practice.QYViews.QYViewsPractice"/>
         <activity android:name=".practice.textureView.TextureViewPractice"/>
         <activity android:name="com.example.cw.iqiyi.activity.WelcomeActivity">

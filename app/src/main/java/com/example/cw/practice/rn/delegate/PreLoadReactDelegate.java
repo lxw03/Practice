@@ -9,6 +9,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.widget.Toast;
 
@@ -26,12 +27,14 @@ import com.facebook.react.modules.core.PermissionListener;
 
 import javax.annotation.Nullable;
 
+
 /**
  * Created by cw on 2017/5/31.
  */
 
 public class PreLoadReactDelegate {
 
+    private static final String TAG = "PreLoadReactDelegate";
     private final int REQUEST_OVERLAY_PERMISSION_CODE = 1111;
     private static final String REDBOX_PERMISSION_GRANTED_MESSAGE = "Overlay permissions have been granted.";
     private static final String REDBOX_PERMISSION_MESSAGE = "Overlay permissions needs to be granted in order for react native apps to run in dev mode";
@@ -90,20 +93,27 @@ public class PreLoadReactDelegate {
         }
 
         if(this.mMainComponentName != null && !needsOverlayPermission) {
-            // 1.从缓存中获取RootView
-            mReactRootView = ReactNativePreLoader.getReactRootView(mMainComponentName);
-
-            if(mReactRootView == null) {
-
-                // 2.缓存中不存在RootView,直接创建
-                mReactRootView = new ReactRootView(mActivity);
-                mReactRootView.startReactApplication(
-                        getReactInstanceManager(),
-                        mMainComponentName,
-                        null);
-            }
-            // 3.将RootView设置到Activity布局
-            this.getPlainActivity().setContentView(this.mReactRootView);
+//            // 1.从缓存中获取RootView
+//            mReactRootView = ReactNativePreLoader.getReactRootView(mMainComponentName);
+//
+//            if(mReactRootView == null) {
+//
+//                // 2.缓存中不存在RootView,直接创建
+//                Log.d(TAG, "ReactRootView -- begin: " + System.currentTimeMillis());
+//                mReactRootView = new ReactRootView(mActivity);
+//                Log.d(TAG, "ReactRootView -- end: " + System.currentTimeMillis());
+//                Log.d(TAG, "startReactApplication -- begin: " + System.currentTimeMillis());
+//                mReactRootView.startReactApplication(
+//                        getReactInstanceManager(),
+//                        mMainComponentName,
+//                        null);
+//                Log.d(TAG, "startReactApplication -- end: " + System.currentTimeMillis());
+//            }
+//            // 3.将RootView设置到Activity布局
+//            this.getPlainActivity().setContentView(this.mReactRootView);
+            Log.d(TAG, "loadApp: -- begin" + System.currentTimeMillis());
+            this.loadApp(mMainComponentName);
+            Log.d(TAG, "loadApp: -- end" + System.currentTimeMillis());
         }
 
         this.mDoubleTapReloadRecognizer = new DoubleTapReloadRecognizer();

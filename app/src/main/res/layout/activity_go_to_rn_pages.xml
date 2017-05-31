@@ -28,4 +28,10 @@
         android:layout_height="wrap_content"
         android:text="前往RN 预加载页面"
         />
+    <Button
+        android:id="@+id/go_to_native_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="前往native页面"
+        />
 </LinearLayout>
