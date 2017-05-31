@@ -26,6 +26,16 @@ class Fragment extends React.Component {
     }
 }
 
+class PreLoad extends React.Component {
+    render(){
+        return(
+            <View style={styles.container}>
+                    <Text style={styles.hello}>This is PreLoad</Text>
+              </View>
+        );
+    }
+}
+
 
 var styles = StyleSheet.create({
   container: {
@@ -41,3 +51,4 @@ var styles = StyleSheet.create({
 
 AppRegistry.registerComponent('Practice', () => Practice);
 AppRegistry.registerComponent('Fragment', () => Fragment);
+AppRegistry.registerComponent('PreLoad', () => PreLoad)

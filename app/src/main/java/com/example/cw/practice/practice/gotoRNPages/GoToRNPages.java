@@ -10,7 +10,9 @@ import android.widget.Button;
 
 import com.example.cw.practice.R;
 import com.example.cw.practice.rn.MyMixedActivity;
+import com.example.cw.practice.rn.MyPreLoadActivity;
 import com.example.cw.practice.rn.MyReactActivity;
+import com.example.cw.practice.rn.preload.ReactNativePreLoader;
 
 /**
  * Created by cw on 2017/4/20.
@@ -19,7 +21,7 @@ import com.example.cw.practice.rn.MyReactActivity;
 public class GoToRNPages extends AppCompatActivity implements View.OnClickListener{
 
     private static final String TAG = "GoToReactActivity";
-    private Button activity_btn, fragment_btn;
+    private Button activity_btn, fragment_btn, preload_btn, preloadbegin_btn;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -27,8 +29,14 @@ public class GoToRNPages extends AppCompatActivity implements View.OnClickListen
         setContentView(R.layout.activity_go_to_rn_pages);
         activity_btn = (Button) findViewById(R.id.go_to_rn_activity_btn);
         fragment_btn = (Button) findViewById(R.id.go_to_rn_fragment_btn);
+        preload_btn = (Button) findViewById(R.id.go_to_rn_preLoad_btn);
+        preloadbegin_btn = (Button) findViewById(R.id.go_to_rn_preLoadBegin_btn);
         activity_btn.setOnClickListener(this);
         fragment_btn.setOnClickListener(this);
+        preloadbegin_btn.setOnClickListener(this);
+        preload_btn.setOnClickListener(this);
+
+
     }
 
     @Override
@@ -45,6 +53,17 @@ public class GoToRNPages extends AppCompatActivity implements View.OnClickListen
                 Intent intent = new Intent(GoToRNPages.this, MyMixedActivity.class);
                 Log.d(TAG, "onClick: " + System.currentTimeMillis());
                 startActivity(intent);
+                break;
+            }
+            case R.id.go_to_rn_preLoad_btn:{
+                Intent intent = new Intent(GoToRNPages.this, MyPreLoadActivity.class);
+                Log.d(TAG, "onClick: " + System.currentTimeMillis());
+                startActivity(intent);
+                break;
+            }
+            case R.id.go_to_rn_preLoadBegin_btn:{
+                ReactNativePreLoader.preLoad(GoToRNPages.this, "PreLoad");
+                Log.d(TAG, "PreLoad: " + System.currentTimeMillis());
                 break;
             }
             default:

@@ -16,4 +16,16 @@
         android:layout_height="wrap_content"
         android:text="前往RN Fragment页面"
         />
+    <Button
+        android:id="@+id/go_to_rn_preLoadBegin_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="点击 预加载RN页面"
+        />
+    <Button
+        android:id="@+id/go_to_rn_preLoad_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="前往RN 预加载页面"
+        />
 </LinearLayout>

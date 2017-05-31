@@ -67,6 +67,11 @@
         </activity>
         <activity android:name=".practice.gotoRNPages.GoToRNPages"/>
         <activity android:name=".rn.MyMixedActivity"/>
+        <activity android:name=".rn.MyPreLoadActivity"
+                  android:label="PreLoad"
+                  android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            >
+        </activity>
         <activity android:name=".practice.QYViews.QYViewsPractice"/>
         <activity android:name=".practice.textureView.TextureViewPractice"/>
         <activity android:name="com.example.cw.iqiyi.activity.WelcomeActivity">

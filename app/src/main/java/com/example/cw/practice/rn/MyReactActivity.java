@@ -31,6 +31,7 @@ public class MyReactActivity extends ReactActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         Log.d(TAG, "onCreate: " + System.currentTimeMillis());
     }
